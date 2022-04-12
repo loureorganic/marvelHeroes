@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarvelHeroes">
         <activity
-            android:name=".home.ui.RegisterActivity"
+            android:name=".screens.login.ui.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.register.ui.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.splash.ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.ui.HomeActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".screens.home.ui.HomeActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

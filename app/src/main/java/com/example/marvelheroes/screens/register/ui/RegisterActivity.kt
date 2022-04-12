@@ -1,4 +1,4 @@
-package com.example.marvelheroes.home.ui
+package com.example.marvelheroes.screens.register.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
