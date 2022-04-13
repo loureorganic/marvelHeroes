@@ -10,12 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarvelHeroes">
         <activity
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name=".screens.login.ui.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".screens.register.ui.RegisterActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name=".screens.splash.ui.SplashActivity"
             android:exported="true">
             <intent-filter>
