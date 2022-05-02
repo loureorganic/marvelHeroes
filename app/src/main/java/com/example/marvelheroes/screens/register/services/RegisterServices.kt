@@ -1,4 +1,8 @@
-package com.example.marvelheroes.screens.home.services
+package com.example.marvelheroes.screens.register.services
 
+import dagger.hilt.android.AndroidEntryPoint
+
+
+@AndroidEntryPoint
 class RegisterServices {
 }

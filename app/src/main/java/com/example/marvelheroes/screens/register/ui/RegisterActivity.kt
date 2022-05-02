@@ -3,7 +3,9 @@ package com.example.marvelheroes.screens.register.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.marvelheroes.databinding.ActivityRegisterBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding

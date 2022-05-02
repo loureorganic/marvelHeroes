@@ -7,8 +7,5 @@ import retrofit2.Response
 
 class ApiRepository {
 
-    suspend fun getCharacters(): Observable<Response<MarvelApi>> {
-       val retrofit =  RetrofitInstance()
-        return retrofit.api.getCharacters()
-    }
+
 }
