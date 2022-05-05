@@ -1,8 +1,21 @@
 package com.example.marvelheroes.screens.login.services
 
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.marvelheroes.screens.login.model.UserLogin
+import com.example.marvelheroes.screens.login.repository.RepositoryLogin
+import javax.inject.Inject
+
+interface ServicesLogin {
+   suspend fun loginUser(user: UserLogin): Boolean
+}
 
 
-@AndroidEntryPoint
-class LoginServices {
+class LoginServices : ServicesLogin {
+
+    @Inject
+    lateinit var loginRepository: RepositoryLogin
+
+
+    override suspend fun loginUser(user: UserLogin): Boolean {
+        return loginRepository.loginUser(user)
+    }
 }
