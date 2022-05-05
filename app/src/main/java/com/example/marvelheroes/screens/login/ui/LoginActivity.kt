@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.marvelheroes.databinding.ActivityLoginBinding
 import com.example.marvelheroes.repositories.network.api.request.HashApi
 import com.example.marvelheroes.screens.login.model.UserLogin
 import com.example.marvelheroes.screens.login.repository.LoginRepository
 import com.example.marvelheroes.screens.login.repository.RepositoryLogin
+import com.example.marvelheroes.screens.login.viewmodel.LoginViewModel
 import com.example.marvelheroes.screens.login.viewmodel.ViewModelLogin
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
     }
 
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()

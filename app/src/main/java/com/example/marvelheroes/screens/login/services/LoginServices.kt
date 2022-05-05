@@ -1,6 +1,7 @@
 package com.example.marvelheroes.screens.login.services
 
 import com.example.marvelheroes.screens.login.model.UserLogin
+import com.example.marvelheroes.screens.login.repository.LoginRepository
 import com.example.marvelheroes.screens.login.repository.RepositoryLogin
 import javax.inject.Inject
 
@@ -16,6 +17,7 @@ class LoginServices : ServicesLogin {
 
 
     override suspend fun loginUser(user: UserLogin): Boolean {
+        loginRepository = LoginRepository()
         return loginRepository.loginUser(user)
     }
 }
