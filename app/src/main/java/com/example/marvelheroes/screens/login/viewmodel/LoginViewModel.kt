@@ -1,5 +1,6 @@
 package com.example.marvelheroes.screens.login.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,18 +17,13 @@ interface ViewModelLogin {
     fun loginUser(user: UserLogin)
 }
 
-@ViewModelScoped
-class LoginViewModel : ViewModel(), ViewModelLogin {
-
-    @Inject
-    lateinit var services: ServicesLogin
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val services: ServicesLogin): ViewModel(), ViewModelLogin {
 
     private val loginUserLiveData = MutableLiveData<Boolean>()
     override val booleanLoginUserLiveData: MutableLiveData<Boolean> = loginUserLiveData
 
     override fun loginUser(user: UserLogin) {
-        //Call dagger 2
-        services = LoginServices()
         viewModelScope.launch {
             val result = services.loginUser(UserLogin("kaiqueguimaraes@gmail.com", "1234567"))
             booleanLoginUserLiveData.postValue(result)

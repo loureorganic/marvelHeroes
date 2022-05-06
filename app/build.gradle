@@ -104,7 +104,4 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.41'
     kapt 'com.google.dagger:hilt-compiler:2.41'
 
-    //Dagger 2
-    implementation 'com.google.dagger:dagger:2.41'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.41'
 }
