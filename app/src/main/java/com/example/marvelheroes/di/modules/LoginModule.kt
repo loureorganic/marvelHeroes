@@ -25,8 +25,8 @@ object LoginModule {
 
     @Singleton
     @Provides
-    fun provideLoginService(): ServicesLogin {
-        return LoginServices()
+    fun provideLoginService(repository : RepositoryLogin): ServicesLogin {
+        return LoginServices(repository)
     }
 
     @Singleton

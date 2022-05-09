@@ -1,14 +1,11 @@
 package com.example.marvelheroes.screens.login.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvelheroes.screens.login.model.UserLogin
-import com.example.marvelheroes.screens.login.services.LoginServices
 import com.example.marvelheroes.screens.login.services.ServicesLogin
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

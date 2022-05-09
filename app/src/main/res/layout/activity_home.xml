@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".screens.home.ui.HomeActivity">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="323dp"
+        android:layout_height="688dp"
+        app:srcCompat="@drawable/marvel_logo"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
