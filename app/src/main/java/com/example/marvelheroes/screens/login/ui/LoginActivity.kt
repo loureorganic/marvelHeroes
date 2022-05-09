@@ -2,10 +2,12 @@ package com.example.marvelheroes.screens.login.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.marvelheroes.databinding.ActivityLoginBinding
 import com.example.marvelheroes.screens.home.ui.HomeActivity
 import com.example.marvelheroes.screens.login.model.UserLogin
+import com.example.marvelheroes.screens.login.utils.LoginConstants
 import com.example.marvelheroes.screens.login.viewmodel.ViewModelLogin
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -33,15 +35,33 @@ class LoginActivity : AppCompatActivity() {
                 email = binding.textInputEditText.text.toString().trim(),
                 password = binding.textInputEditText2.text.toString().trim()
             )
-            viewModel.loginUser(userLogin)
+            dataVerification(userLogin)
         }
+    }
+
+    private fun dataVerification(userLogin: UserLogin) {
+        val result = viewModel.dataValidation(userLogin)
+
+        if (result == LoginConstants.INVALID_EMAIL) {
+            Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
+        } else if (result == LoginConstants.EMPTY_PASSWORD) {
+            Toast.makeText(this, "Enter password...", Toast.LENGTH_SHORT).show()
+        } else if (result == LoginConstants.VALID) {
+            loginAccount(userLogin)
+        }
+    }
+
+    private fun loginAccount(userLogin: UserLogin) {
+        viewModel.loginUser(userLogin)
 
         viewModel.booleanLoginUserLiveData.observe(this) { response ->
             if (response) {
                 startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                 finish()
             }
+            else {
+                Toast.makeText(this, "Email or password are invalid", Toast.LENGTH_SHORT).show()
+            }
         }
-
     }
 }

@@ -12,6 +12,7 @@ import javax.inject.Inject
 interface ViewModelLogin {
     val booleanLoginUserLiveData: MutableLiveData<Boolean>
     fun loginUser(user: UserLogin)
+    fun dataValidation(user: UserLogin) : String
 }
 
 @HiltViewModel
@@ -22,8 +23,12 @@ class LoginViewModel @Inject constructor(private val services: ServicesLogin): V
 
     override fun loginUser(user: UserLogin) {
         viewModelScope.launch {
-            val result = services.loginUser(UserLogin("kaiqueguimaraes@gmail.com", "1234567"))
+            val result = services.loginUser(UserLogin(user.email, user.password))
             booleanLoginUserLiveData.postValue(result)
         }
+    }
+
+    override fun dataValidation(user: UserLogin): String {
+        return services.dataValidation(user)
     }
 }

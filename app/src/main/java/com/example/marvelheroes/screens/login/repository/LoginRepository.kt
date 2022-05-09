@@ -1,23 +1,19 @@
 package com.example.marvelheroes.screens.login.repository
 
+import com.example.marvelheroes.repositories.database.AuthenticatorDatabase
 import com.example.marvelheroes.screens.login.model.UserLogin
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
+import javax.inject.Singleton
 
 interface RepositoryLogin {
     suspend fun loginUser(userLogin: UserLogin): Boolean
 }
 
-class LoginRepository : RepositoryLogin {
-
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-
+@Singleton
+class LoginRepository @Inject constructor(private val database: AuthenticatorDatabase) : RepositoryLogin {
     override suspend fun loginUser(userLogin: UserLogin): Boolean {
-        return try {
-            val data = firebaseAuth.signInWithEmailAndPassword(userLogin.email, userLogin.password).await()
-            true
-        } catch (e: Exception) {
-            false
-        }
+        return database.loginUser(user = userLogin)
     }
 }

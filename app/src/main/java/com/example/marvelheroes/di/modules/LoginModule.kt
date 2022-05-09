@@ -1,5 +1,6 @@
 package com.example.marvelheroes.di.modules
 
+import com.example.marvelheroes.repositories.database.AuthenticatorDatabase
 import com.example.marvelheroes.screens.login.repository.LoginRepository
 import com.example.marvelheroes.screens.login.repository.RepositoryLogin
 import com.example.marvelheroes.screens.login.services.LoginServices
@@ -19,8 +20,8 @@ object LoginModule {
 
     @Singleton
     @Provides
-    fun provideLoginRepository(): RepositoryLogin {
-        return LoginRepository()
+    fun provideLoginRepository(database: AuthenticatorDatabase): RepositoryLogin {
+        return LoginRepository(database)
     }
 
     @Singleton
