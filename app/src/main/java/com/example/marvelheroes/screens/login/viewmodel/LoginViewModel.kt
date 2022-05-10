@@ -12,7 +12,7 @@ import javax.inject.Inject
 interface ViewModelLogin {
     val booleanLoginUserLiveData: MutableLiveData<Boolean>
     fun loginUser(user: UserLogin)
-    fun dataValidation(user: UserLogin) : String
+    fun dataLoginValidation(user: UserLogin) : String
 }
 
 @HiltViewModel
@@ -28,7 +28,7 @@ class LoginViewModel @Inject constructor(private val services: ServicesLogin): V
         }
     }
 
-    override fun dataValidation(user: UserLogin): String {
-        return services.dataValidation(user)
+    override fun dataLoginValidation(user: UserLogin): String {
+        return services.dataLoginValidation(user)
     }
 }

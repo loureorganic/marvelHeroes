@@ -41,12 +41,12 @@ class LoginActivity : AppCompatActivity() {
                 email = binding.textInputEditText.text.toString().trim(),
                 password = binding.textInputEditText2.text.toString().trim()
             )
-            dataVerification(userLogin)
+            dataLoginValidation(userLogin)
         }
     }
 
-    private fun dataVerification(userLogin: UserLogin) {
-        val result = viewModel.dataValidation(userLogin)
+    private fun dataLoginValidation(userLogin: UserLogin) {
+        val result = viewModel.dataLoginValidation(userLogin)
 
         if (result == LoginConstants.INVALID_EMAIL) {
             Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()

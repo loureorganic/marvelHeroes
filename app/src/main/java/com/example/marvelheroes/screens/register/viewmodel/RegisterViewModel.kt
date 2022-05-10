@@ -11,25 +11,30 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 interface ViewModelRegister {
- fun createUser(userAccount: UserAccount)
+    fun createUser(userAccount: UserAccount)
+    fun validateRegisterData(userAccount: UserAccount) : String
     val booleanCreateUserLiveData: MutableLiveData<Boolean>
 }
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val service: ServiceRegister) : ViewModelRegister, ViewModel() {
+class RegisterViewModel @Inject constructor(private val services: ServiceRegister) :
+    ViewModelRegister, ViewModel() {
 
     private val createUserLiveData = MutableLiveData<Boolean>()
     override val booleanCreateUserLiveData: MutableLiveData<Boolean> = createUserLiveData
 
     override fun createUser(userAccount: UserAccount) {
         viewModelScope.launch {
-         val result =  service.createUser(userAccount)
+            val result = services.createUser(userAccount)
             if (result.data != null) {
-                  booleanCreateUserLiveData.postValue(true)
-              }
-            else {
+                booleanCreateUserLiveData.postValue(true)
+            } else {
                 booleanCreateUserLiveData.postValue(false)
             }
         }
+    }
+
+    override fun validateRegisterData(userAccount: UserAccount): String {
+        return services.validateRegisterData(userAccount)
     }
 }
