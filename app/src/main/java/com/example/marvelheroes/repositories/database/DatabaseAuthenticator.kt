@@ -1,6 +1,5 @@
 package com.example.marvelheroes.repositories.database
 
-
 import com.example.marvelheroes.screens.login.model.UserLogin
 import com.example.marvelheroes.screens.register.model.UserAccount
 import com.example.marvelheroes.utils.Resource
@@ -36,8 +35,6 @@ class DatabaseAuthenticator @Inject constructor(
         return withContext(Dispatchers.IO) {
 
             val result = firebaseAuth.createUserWithEmailAndPassword(user.email, user.password).await()
-
-
             val uid = firebaseAuth.uid
 
             if (uid != null) {

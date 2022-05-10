@@ -1,6 +1,5 @@
 package com.example.marvelheroes.screens.register.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,7 +11,7 @@ import javax.inject.Inject
 
 interface ViewModelRegister {
     fun createUser(userAccount: UserAccount)
-    fun validateRegisterData(userAccount: UserAccount) : String
+    fun validateRegisterData(userAccount: UserAccount): String
     val booleanCreateUserLiveData: MutableLiveData<Boolean>
 }
 
