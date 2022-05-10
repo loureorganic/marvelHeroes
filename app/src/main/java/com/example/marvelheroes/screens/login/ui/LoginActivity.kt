@@ -9,6 +9,7 @@ import com.example.marvelheroes.screens.home.ui.HomeActivity
 import com.example.marvelheroes.screens.login.model.UserLogin
 import com.example.marvelheroes.screens.login.utils.LoginConstants
 import com.example.marvelheroes.screens.login.viewmodel.ViewModelLogin
+import com.example.marvelheroes.screens.register.ui.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -29,6 +30,11 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+        binding.textView6.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+            finish()
+        }
 
         binding.button.setOnClickListener {
             val userLogin = UserLogin(
