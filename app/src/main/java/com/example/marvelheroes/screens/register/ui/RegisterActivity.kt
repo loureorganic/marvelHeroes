@@ -30,23 +30,16 @@ class RegisterActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        binding.button2.setOnClickListener{
+        binding.button2.setOnClickListener {
             val user = UserAccount(
-                fullName=  binding.textInputEditText4.text.toString().trim(),
+                fullName = binding.textInputEditText4.text.toString().trim(),
                 email = binding.textInputEditText5.text.toString().trim(),
                 password = binding.textInputEditText6.text.toString().trim(),
                 confirmPassword = binding.textInputEditText7.text.toString().trim(),
 
                 )
-          validateRegisterData(user)
+            validateRegisterData(user)
         }
-
-        viewModel.createUser(UserAccount(email = "tai2@gmail.com", password = "12345678", confirmPassword = "12345678", fullName = "TESTE"))
-
-        viewModel.booleanCreateUserLiveData.observe(this){
-            if(it){
-            startActivity(Intent(this@RegisterActivity, HomeActivity::class.java))
-        }}
     }
 
     private fun validateRegisterData(user: UserAccount) {
@@ -73,7 +66,24 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createUserAccount(user: UserAccount) {
-     val resultCreateUser =  viewModel.createUser(user)
+        viewModel.createUser(user)
 
+        viewModel.errorBooleanCreateUserLiveData.observe(this) { errorResponse ->
+            if (errorResponse) {
+                Toast.makeText(
+                    this,
+                    "Error on trying to create your account, try later soon!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                viewModel.booleanCreateUserLiveData.observe(this) { responseCreate ->
+                    if (responseCreate) {
+                        startActivity(Intent(this@RegisterActivity, HomeActivity::class.java))
+                    } else {
+                        Toast.makeText(this, "Failed saving user info account, try other email and verify with your information is correct", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
     }
 }

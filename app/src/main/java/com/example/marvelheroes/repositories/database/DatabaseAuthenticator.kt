@@ -3,6 +3,7 @@ package com.example.marvelheroes.repositories.database
 import com.example.marvelheroes.screens.login.model.UserLogin
 import com.example.marvelheroes.screens.register.model.UserAccount
 import com.example.marvelheroes.utils.Resource
+import com.example.marvelheroes.utils.safeCall
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -33,7 +34,7 @@ class DatabaseAuthenticator @Inject constructor(
 
     override suspend fun createUser(user: UserAccount): Resource<AuthResult> {
         return withContext(Dispatchers.IO) {
-
+            safeCall {
             val result = firebaseAuth.createUserWithEmailAndPassword(user.email, user.password).await()
             val uid = firebaseAuth.uid
 
@@ -41,6 +42,7 @@ class DatabaseAuthenticator @Inject constructor(
                 firebaseDatabase.getReference("Users").child(uid).setValue(user).await()
             }
             Resource.Success(result)
+            }
         }
     }
 }

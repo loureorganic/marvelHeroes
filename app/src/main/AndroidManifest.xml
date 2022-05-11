@@ -17,6 +17,7 @@
             android:exported="false" />
         <activity
             android:name=".screens.register.ui.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="false" />
         <activity
             android:theme="@style/Theme.AppCompat.NoActionBar"

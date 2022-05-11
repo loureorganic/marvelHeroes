@@ -1,5 +1,6 @@
 package com.example.marvelheroes.screens.register.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,6 +14,7 @@ interface ViewModelRegister {
     fun createUser(userAccount: UserAccount)
     fun validateRegisterData(userAccount: UserAccount): String
     val booleanCreateUserLiveData: MutableLiveData<Boolean>
+    val errorBooleanCreateUserLiveData: MutableLiveData<Boolean>
 }
 
 @HiltViewModel
@@ -22,14 +24,23 @@ class RegisterViewModel @Inject constructor(private val services: ServiceRegiste
     private val createUserLiveData = MutableLiveData<Boolean>()
     override val booleanCreateUserLiveData: MutableLiveData<Boolean> = createUserLiveData
 
+    private val errorCreateUserLiveData = MutableLiveData<Boolean>()
+    override val errorBooleanCreateUserLiveData: MutableLiveData<Boolean> = errorCreateUserLiveData
+
     override fun createUser(userAccount: UserAccount) {
         viewModelScope.launch {
-            val result = services.createUser(userAccount)
-            if (result.data != null) {
-                booleanCreateUserLiveData.postValue(true)
-            } else {
-                booleanCreateUserLiveData.postValue(false)
-            }
+           try {
+               val result = services.createUser(userAccount)
+               if (result.data != null) {
+                   booleanCreateUserLiveData.postValue(true)
+                   errorBooleanCreateUserLiveData.postValue(false)
+               } else {
+                   booleanCreateUserLiveData.postValue(false)
+                   errorBooleanCreateUserLiveData.postValue(false)
+               }
+           } catch (e: Exception){
+               errorBooleanCreateUserLiveData.postValue(true)
+           }
         }
     }
 
