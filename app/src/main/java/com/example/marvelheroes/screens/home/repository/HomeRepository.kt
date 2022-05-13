@@ -2,16 +2,19 @@ package com.example.marvelheroes.screens.home.repository
 
 import com.example.marvelheroes.repositories.network.api.models.MarvelApi
 import com.example.marvelheroes.repositories.network.api.request.RetrofitInstance
-import retrofit2.Response
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import javax.inject.Singleton
 
 interface RepositoryHome {
-    suspend fun getCharacters(): Result<Response<MarvelApi>>
+    suspend fun getCharacters(): Flow<MarvelApi>
 }
 
+@Singleton
 class HomeRepository : RepositoryHome {
 
-    override suspend fun getCharacters(): Result<Response<MarvelApi>> {
+    override suspend fun getCharacters(): Flow<MarvelApi> = flow {
         val retrofit = RetrofitInstance()
-        return retrofit.api.getCharacters()
+        emit(retrofit.api.getCharacters())
     }
 }

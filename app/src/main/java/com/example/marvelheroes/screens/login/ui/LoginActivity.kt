@@ -46,14 +46,17 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun dataLoginValidation(userLogin: UserLogin) {
-        val result = viewModel.dataLoginValidation(userLogin)
 
-        if (result == LoginConstants.INVALID_EMAIL) {
-            Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
-        } else if (result == LoginConstants.EMPTY_PASSWORD) {
-            Toast.makeText(this, "Enter password...", Toast.LENGTH_SHORT).show()
-        } else if (result == LoginConstants.VALID) {
-            loginAccount(userLogin)
+        when (viewModel.dataLoginValidation(userLogin)) {
+            LoginConstants.INVALID_EMAIL -> {
+                Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
+            }
+            LoginConstants.EMPTY_PASSWORD -> {
+                Toast.makeText(this, "Enter password...", Toast.LENGTH_SHORT).show()
+            }
+            LoginConstants.VALID -> {
+                loginAccount(userLogin)
+            }
         }
     }
 

@@ -1,11 +1,19 @@
 package com.example.marvelheroes.repositories.network.api.request
 
 import com.example.marvelheroes.repositories.network.api.models.MarvelApi
-import retrofit2.Response
+import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.PUBLIC_KEY
+import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.md5
 import retrofit2.http.GET
+import retrofit2.http.Query
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 
 
 interface MarvelApiRequest {
-    @GET("/v1/public/characters?limit=9&ts=2022-04-22T04:43:38.308Z&apikey=1d90d4e7237d341041c5451496af7e3f&hash=350f2db9b2e121a72e9b22ca70dcf300")
-    suspend fun getCharacters() : Result<Response<MarvelApi>>
+    @GET("/v1/public/characters")
+    suspend fun getCharacters(
+        @Query("ts") timestamp: String = DateTimeFormatter.ISO_INSTANT.format(Instant.now()),
+        @Query("apikey") apiKey: String = PUBLIC_KEY,
+        @Query("hash") hash: String = md5
+    ): MarvelApi
 }
