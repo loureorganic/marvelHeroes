@@ -14,6 +14,8 @@ interface MarvelApiRequest {
     suspend fun getCharacters(
         @Query("ts") timestamp: String = DateTimeFormatter.ISO_INSTANT.format(Instant.now()),
         @Query("apikey") apiKey: String = PUBLIC_KEY,
-        @Query("hash") hash: String = md5
+        @Query("hash") hash: String = md5,
+        @Query("limit") count : Int = 9,
+        @Query("offset") offset : Int = 0
     ): MarvelApi
 }
