@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".di.App"
@@ -12,17 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarvelHeroes">
         <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name=".screens.login.ui.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".screens.register.ui.RegisterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name=".screens.splash.ui.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,6 +31,7 @@
         </activity>
         <activity
             android:name=".screens.home.ui.HomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="false" />
 
         <meta-data
