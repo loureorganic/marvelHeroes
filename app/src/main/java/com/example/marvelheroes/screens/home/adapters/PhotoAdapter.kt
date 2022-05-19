@@ -9,14 +9,20 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.Result
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class PhotoAdapter @Inject constructor(var context: Context, var glide: ImageLoader) :
+class PhotoAdapter (var context: Context) :
     RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
 
     private var dataList = emptyList<Result>()
+
+
+    private var glide : ImageLoader = ImageLoader()
 
     internal fun setDataList(userImageList: List<Result>) {
         this.dataList = userImageList

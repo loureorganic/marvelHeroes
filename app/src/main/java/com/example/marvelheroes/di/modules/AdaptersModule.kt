@@ -15,7 +15,9 @@ object AdaptersModule {
 
     @Provides
     @Singleton
-    fun providePhotoAdapterInstance(context: Context, glide: ImageLoader ) : PhotoAdapter {
-        return PhotoAdapter(context, glide)
+    fun providePhotoAdapterInstance(context: Context,
+        glide: ImageLoader
+    ): PhotoAdapter {
+        return PhotoAdapter(context)
     }
 }
