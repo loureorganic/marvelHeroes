@@ -1,11 +1,13 @@
 package com.example.marvelheroes.screens.home.viewmodel
 
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvelheroes.repositories.network.api.models.MarvelApi
+import com.example.marvelheroes.repositories.network.api.models.Result
 import com.example.marvelheroes.screens.home.services.ServicesHome
+import com.example.marvelheroes.screens.home.ui.model.CardModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -14,19 +16,19 @@ import javax.inject.Inject
 
 interface ViewModelHome {
     fun getCharacters()
-    val marvelList: MutableLiveData<MarvelApi>
+    val marvelList: MutableLiveData<List<Result>>
 }
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val services: ServicesHome) : ViewModel(), ViewModelHome {
+class HomeViewModel @Inject constructor(private val services: ServicesHome) : ViewModel(),
+    ViewModelHome {
 
-    private val marvelApi = MutableLiveData<MarvelApi>()
-    override val marvelList: MutableLiveData<MarvelApi> = marvelApi
-
+    private val marvelApi = MutableLiveData<List<Result>>()
+    override val marvelList: MutableLiveData<List<Result>> = marvelApi
     override fun getCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
             services.getCharacters().collect { response ->
-                marvelList.postValue(response)
+                marvelList.postValue(response.data.results.slice(0..5))
             }
         }
     }

@@ -20,7 +20,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".screens.splash.ui.SplashActivity"
+            android:name=".screens.home.ui.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".screens.home.ui.HomeActivity"
+            android:name=".screens.splash.ui.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="false" />
 
