@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvelheroes.repositories.network.api.models.Result
 import com.example.marvelheroes.screens.home.services.ServicesHome
-import com.example.marvelheroes.screens.home.ui.model.CardModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -28,7 +27,7 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
     override fun getCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
             services.getCharacters().collect { response ->
-                marvelList.postValue(response.data.results.slice(0..5))
+                marvelList.postValue(response.data.results)
             }
         }
     }
