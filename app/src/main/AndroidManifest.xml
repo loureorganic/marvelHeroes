@@ -31,8 +31,8 @@
         </activity>
         <activity
             android:name=".screens.splash.ui.SplashActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -16,4 +16,5 @@
     <string name="confirm_your_password">Confirm your password</string>
     <string name="register">register</string>
     <string name="title_activity_home_compose">HomeComposeActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

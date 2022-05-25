@@ -8,14 +8,13 @@ import retrofit2.http.Query
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 
-
 interface MarvelApiRequest {
     @GET("/v1/public/characters")
     suspend fun getCharacters(
         @Query("ts") timestamp: String = DateTimeFormatter.ISO_INSTANT.format(Instant.now()),
         @Query("apikey") apiKey: String = PUBLIC_KEY,
         @Query("hash") hash: String = md5,
-        @Query("limit") count : Int = 50,
-        @Query("offset") offset : Int = 0
+        @Query("limit") count: Int = 5,
+        @Query("offset") offset: Int = 0
     ): MarvelApi
 }
