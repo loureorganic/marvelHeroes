@@ -1,20 +1,44 @@
 package com.example.marvelheroes.repositories.network.api.request
 
-import com.example.marvelheroes.repositories.network.api.models.MarvelApi
+import com.example.marvelheroes.repositories.network.api.models.characterModel.MarvelApi
+import com.example.marvelheroes.repositories.network.api.models.comicsModel.ComicsModel
 import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.PUBLIC_KEY
-import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.md5
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 
 interface MarvelApiRequest {
     @GET("/v1/public/characters")
-    suspend fun getCharacters(
-        @Query("ts") timestamp: String = DateTimeFormatter.ISO_INSTANT.format(Instant.now()),
+    suspend fun getCharactersForSliding(
+        @Query("ts") timestamp: String,
         @Query("apikey") apiKey: String = PUBLIC_KEY,
-        @Query("hash") hash: String = md5,
-        @Query("limit") count: Int = 5,
-        @Query("offset") offset: Int = 0
+        @Query("hash") hash: String,
+        @Query("limit") count: Int = 7,
+        @Query("offset") offset: Int = 2
     ): MarvelApi
+
+    @GET("/v1/public/characters")
+    suspend fun getAllCharacters(
+        @Query("ts") timestamp: String,
+        @Query("apikey") apiKey: String = PUBLIC_KEY,
+        @Query("hash") hash: String,
+        @Query("limit") count: Int = 60,
+        @Query("offset") offset: Int = 0,
+    ): MarvelApi
+
+    @GET("/v1/public/characters/{characterId}")
+    suspend fun getAnCharacters(
+        @Path("characterId") characterId : String,
+        @Query("ts") timestamp: String,
+        @Query("apikey") apiKey: String = PUBLIC_KEY,
+        @Query("hash") hash: String,
+    ): MarvelApi
+
+    @GET("/v1/public/comics")
+    suspend fun getAllComics(
+        @Query("ts") timestamp: String,
+        @Query("apikey") apiKey: String = PUBLIC_KEY,
+        @Query("hash") hash: String,
+    ) : ComicsModel
+
 }

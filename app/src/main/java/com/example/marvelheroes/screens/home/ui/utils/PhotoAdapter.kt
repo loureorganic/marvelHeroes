@@ -1,7 +1,6 @@
 package com.example.marvelheroes.screens.home.ui.utils
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelheroes.R
-import com.example.marvelheroes.repositories.network.api.models.Result
+import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
 
 
 class PhotoAdapter(var context: Context) : RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
 
-    private var dataList = emptyList<Result>()
+    private var dataList = emptyList<ResultCharacters>()
 
-    internal fun setDataList(userImageList: List<Result>) {
+    internal fun setDataList(userImageList: List<ResultCharacters>) {
         this.dataList = userImageList
     }
 

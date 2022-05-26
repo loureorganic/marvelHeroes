@@ -1,6 +1,6 @@
-package com.example.marvelheroes.repositories.network.api.models
+package com.example.marvelheroes.repositories.network.api.models.characterModel
 
-data class Result(
+data class ResultCharacters(
     val comics: Comics,
     val description: String,
     val events: Events,

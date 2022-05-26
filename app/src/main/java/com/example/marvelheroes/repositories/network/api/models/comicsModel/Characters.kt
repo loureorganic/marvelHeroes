@@ -1,6 +1,6 @@
-package com.example.marvelheroes.repositories.network.api.models
+package com.example.marvelheroes.repositories.network.api.models.comicsModel
 
-data class Comics(
+data class Characters(
     val available: Int,
     val collectionURI: String,
     val items: List<Item>,

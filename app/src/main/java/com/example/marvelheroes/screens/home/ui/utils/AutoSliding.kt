@@ -1,7 +1,6 @@
 package com.example.marvelheroes.screens.home.ui.utils
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import com.example.marvelheroes.R
-import com.example.marvelheroes.repositories.network.api.models.Result
+import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
@@ -33,7 +32,7 @@ import kotlin.math.absoluteValue
 @SuppressLint("ResourceType")
 @OptIn(ExperimentalPagerApi::class, ExperimentalCoroutinesApi::class)
 @Composable
-fun AutoSliding(list: List<Result>) {
+fun AutoSliding(list: List<ResultCharacters>) {
     val pagerState = rememberPagerState(
         pageCount = list.size,
         initialOffscreenLimit = 2
@@ -85,7 +84,7 @@ fun AutoSliding(list: List<Result>) {
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(Color.Red)
+                            .background(Color.White)
                     ) {
                         val img2 = list[page]
                         val url = img2.thumbnail.path.replaceRange(
@@ -93,7 +92,7 @@ fun AutoSliding(list: List<Result>) {
                             4,
                             "s"
                         ) + "/portrait_uncanny.${img2.thumbnail.extension}"
-                        val image = loadPicture(url = url, defaultImage = R.id.image).value
+                        val image = loadPicture(url = url, defaultImage = R.drawable.marvel_logo).value
                         image?.let { img ->
                             Image(
                                 bitmap = img.asImageBitmap(),

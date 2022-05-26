@@ -1,5 +1,6 @@
 package com.example.marvelheroes.di.modules
 
+import com.example.marvelheroes.repositories.network.api.request.RetrofitInstance
 import com.example.marvelheroes.screens.home.repository.HomeRepository
 import com.example.marvelheroes.screens.home.repository.RepositoryHome
 import com.example.marvelheroes.screens.home.services.HomeServices
@@ -31,8 +32,8 @@ object HomeModule {
 
     @Provides
     @Singleton
-    fun provideHomeRepository() : RepositoryHome {
-        return HomeRepository()
+    fun provideHomeRepository(retrofitInstance: RetrofitInstance) : RepositoryHome {
+        return HomeRepository(retrofitInstance)
     }
 
 }

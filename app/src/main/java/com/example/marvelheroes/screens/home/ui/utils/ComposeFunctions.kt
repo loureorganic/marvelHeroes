@@ -15,12 +15,12 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.R
-import com.example.marvelheroes.repositories.network.api.models.Result
+import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 @Composable
-fun CardList(list: List<Result>) {
+fun CardList(list: List<ResultCharacters>) {
     Column(Modifier.background(Color.Red)) {
         list.slice(0..3).map { item ->
             CardView(item)
@@ -30,7 +30,7 @@ fun CardList(list: List<Result>) {
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @Composable
-fun CardView(item: Result) {
+fun CardView(item: ResultCharacters) {
     val url = item.thumbnail.path + "/portrait_xlarge.${item.thumbnail.extension}"
     val image = loadPicture(url = url, defaultImage = R.drawable.marvel_logo).value
     Card(
