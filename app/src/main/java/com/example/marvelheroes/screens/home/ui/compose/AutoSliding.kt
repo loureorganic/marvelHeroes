@@ -50,13 +50,6 @@ fun AutoSliding(list: List<ResultCharacters>) {
     }
     Column() {
 
-        Column(modifier = Modifier.height(70.dp)) {
-            Image(
-                painter = painterResource(id = R.drawable.marvel_logo),
-                contentDescription = "Marvel Logo",
-                modifier = Modifier.padding(8.dp)
-            )
-        }
         Column(modifier = Modifier.height(380.dp)) {
             HorizontalPager(
                 state = pagerState,

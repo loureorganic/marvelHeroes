@@ -3,7 +3,6 @@ package com.example.marvelheroes.screens.home.ui.compose
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,8 +15,10 @@ import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.comicsModel.ResultComics
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @SuppressLint("ResourceType")
 @Composable
 fun CharacterCard(card: ResultComics) {
@@ -45,7 +46,6 @@ fun CharacterCard(card: ResultComics) {
         Column(
             modifier = Modifier
                 .align(Alignment.BottomStart)
-                .height(28.dp)
                 .background(Color.White)
                 .wrapContentWidth()
         ) {
