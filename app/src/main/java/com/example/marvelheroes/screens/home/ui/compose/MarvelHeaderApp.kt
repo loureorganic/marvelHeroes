@@ -29,7 +29,7 @@ fun MarvelHeaderApp(onSearchClicked: () -> Unit) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Image(
-                painter = painterResource(id = R.drawable.marvel_logo),
+                painter = painterResource(id = R.drawable.marvel_heroes_logo_white),
                 contentDescription = "Marvel Logo",
                 modifier = Modifier
                     .padding(8.dp)

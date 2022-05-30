@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.screens.home.ui.compose.CharacterRowList
 import com.example.marvelheroes.screens.home.ui.compose.MainAppBar
 import com.example.marvelheroes.screens.home.ui.ui.theme.MarvelHeroesTheme
-import com.example.marvelheroes.screens.home.ui.utils.AutoSliding
+import com.example.marvelheroes.screens.home.ui.compose.AutoSliding
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import com.example.marvelheroes.screens.home.viewmodel.ViewModelHome
 import dagger.hilt.android.AndroidEntryPoint

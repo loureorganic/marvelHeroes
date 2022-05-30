@@ -29,7 +29,7 @@ fun CharacterCard(card: ResultComics) {
             4,
             "s"
         ) + "/portrait_uncanny.${card.thumbnail.extension}"
-        val image = loadPicture(url = url, defaultImage = R.drawable.marvel_logo).value
+        val image = loadPicture(url = url, defaultImage = R.drawable.marvel_heroes_placeholder).value
         image?.let { img ->
             Image(
                 bitmap = img.asImageBitmap(),
@@ -43,7 +43,7 @@ fun CharacterCard(card: ResultComics) {
         // Add a horizontal space between the image and the column
         Spacer(modifier = Modifier.width(8.dp))
 
-        Column(
+        /*Column(
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .background(Color.White)
@@ -52,6 +52,6 @@ fun CharacterCard(card: ResultComics) {
             Text(text = card.title)
             // Add a vertical space between the author and message texts
             Spacer(modifier = Modifier.height(4.dp))
-        }
+        }*/
     }
 }

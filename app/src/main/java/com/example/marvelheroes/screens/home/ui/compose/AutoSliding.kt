@@ -1,6 +1,7 @@
-package com.example.marvelheroes.screens.home.ui.utils
+package com.example.marvelheroes.screens.home.ui.compose
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,12 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
+import com.example.marvelheroes.screens.home.ui.utils.loadPicture
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
@@ -33,8 +34,10 @@ import kotlin.math.absoluteValue
 @OptIn(ExperimentalPagerApi::class, ExperimentalCoroutinesApi::class)
 @Composable
 fun AutoSliding(list: List<ResultCharacters>) {
+    val listFiltered = list.filter { !it.thumbnail.path.contains("available") }
+    Log.i("LIST FILTERED", "AQUI $listFiltered")
     val pagerState = rememberPagerState(
-        pageCount = list.size,
+        pageCount = listFiltered.size,
         initialOffscreenLimit = 2
     )
 
@@ -79,13 +82,13 @@ fun AutoSliding(list: List<ResultCharacters>) {
                             .fillMaxSize()
                             .background(Color.White)
                     ) {
-                        val img2 = list[page]
+                        val img2 = listFiltered[page]
                         val url = img2.thumbnail.path.replaceRange(
                             4,
                             4,
                             "s"
                         ) + "/portrait_uncanny.${img2.thumbnail.extension}"
-                        val image = loadPicture(url = url, defaultImage = R.drawable.marvel_logo).value
+                        val image = loadPicture(url = url, defaultImage = R.drawable.marvel_heroes_placeholder).value
                         image?.let { img ->
                             Image(
                                 bitmap = img.asImageBitmap(),
