@@ -39,6 +39,7 @@ interface MarvelApiRequest {
         @Query("ts") timestamp: String,
         @Query("apikey") apiKey: String = PUBLIC_KEY,
         @Query("hash") hash: String,
+        @Query("limit") count: Int = 80,
     ) : ComicsModel
 
 }

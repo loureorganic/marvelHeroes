@@ -39,6 +39,8 @@ class HomeActivity : ComponentActivity() {
         val searchWidgetState by viewModelHome.searchWidgetState
         val searchTextState by viewModelHome.searchTextState
 
+        Log.i("TEXT", "SEARCH $searchTextState")
+
         viewModelHome.marvelListAllComics.observe(this) { list2   ->
             viewModelHome.marvelList.observe(this) { list ->
                 setContent {

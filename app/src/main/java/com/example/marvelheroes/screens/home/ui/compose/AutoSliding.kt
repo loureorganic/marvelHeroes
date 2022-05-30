@@ -50,12 +50,12 @@ fun AutoSliding(list: List<ResultCharacters>) {
     }
     Column() {
 
-        Column(modifier = Modifier.height(380.dp)) {
+        Column(modifier = Modifier.height(320.dp)) {
             HorizontalPager(
                 state = pagerState,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(0.dp, 40.dp, 0.dp, 40.dp)
+                    .padding(0.dp, 20.dp, 0.dp, 20.dp)
             ) { page ->
                 Card(
                     modifier = Modifier

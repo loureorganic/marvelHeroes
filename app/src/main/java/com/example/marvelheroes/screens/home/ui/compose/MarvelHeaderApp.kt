@@ -24,8 +24,10 @@ import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 @Composable
 fun MarvelHeaderApp(onSearchClicked: () -> Unit) {
     TopAppBar(backgroundColor = Color.Red) {
-        Row(  modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween){
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.marvel_logo),
                 contentDescription = "Marvel Logo",
