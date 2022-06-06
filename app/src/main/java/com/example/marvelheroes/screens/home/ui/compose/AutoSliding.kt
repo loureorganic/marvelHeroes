@@ -35,7 +35,6 @@ import kotlin.math.absoluteValue
 @Composable
 fun AutoSliding(list: List<ResultCharacters>) {
     val listFiltered = list.filter { !it.thumbnail.path.contains("available") }
-    Log.i("LIST FILTERED", "AQUI $listFiltered")
     val pagerState = rememberPagerState(
         pageCount = listFiltered.size,
         initialOffscreenLimit = 2
