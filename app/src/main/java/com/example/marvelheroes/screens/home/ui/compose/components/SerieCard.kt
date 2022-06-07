@@ -15,7 +15,6 @@ import com.example.marvelheroes.repositories.network.api.models.seriesModel.Resu
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
 @OptIn(ExperimentalCoroutinesApi::class)
 @SuppressLint("ResourceType")
 @Composable
