@@ -15,6 +15,7 @@ import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,6 +28,7 @@ interface ViewModelHome {
     val marvelListAllCharacters: MutableLiveData<List<ResultCharacters>>
     val marvelListAllComics: MutableLiveData<List<ResultComics>>
     val marvelListAllSeries: MutableLiveData<List<ResultSeries>>
+    val errorMarvelListAllSeries: MutableLiveData<Boolean>
     val searchWidgetState: State<SearchWidgetState>
     val searchTextState: State<String>
     fun updateSearchWidgetState(newValue: SearchWidgetState)
@@ -57,16 +59,18 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
     private val marvelApi = MutableLiveData<List<ResultCharacters>>()
     private val comicsCall = MutableLiveData<List<ResultComics>>()
     private val seriesCall = MutableLiveData<List<ResultSeries>>()
+    private val errorSeriesCall = MutableLiveData<Boolean>()
 
     override val marvelList: MutableLiveData<List<ResultCharacters>> = marvelApi
     override val marvelListAllCharacters: MutableLiveData<List<ResultCharacters>> = marvelApi
     override val marvelListAllComics: MutableLiveData<List<ResultComics>> = comicsCall
     override val marvelListAllSeries: MutableLiveData<List<ResultSeries>> = seriesCall
+    override val errorMarvelListAllSeries: MutableLiveData<Boolean> = errorSeriesCall
 
 
     override fun getCharactersForSliding() {
         viewModelScope.launch(Dispatchers.IO) {
-            services.getCharactersForSliding().collect { response ->
+            services.getCharactersForSliding().filter { true }.collect { response ->
                 marvelList.postValue(response.data.results)
             }
         }
@@ -74,7 +78,7 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
 
     override fun getAllCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
-            services.getAllCharacters().collect { response ->
+            services.getAllCharacters().filter { true }.collect { response ->
                 marvelListAllCharacters.postValue(response.data.results)
             }
         }
@@ -82,7 +86,7 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
 
     override fun getAllComics() {
         viewModelScope.launch(Dispatchers.IO) {
-            services.getAllComics().collect { response ->
+            services.getAllComics().filter { true }.collect { response ->
                 marvelListAllComics.postValue(response.data.results)
             }
         }
@@ -90,8 +94,13 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
 
     override fun getAllSeries() {
         viewModelScope.launch(Dispatchers.IO) {
-            services.getAllSeries().collect { response ->
-                marvelListAllSeries.postValue(response.data.results)
+            services.getAllSeries().collect { responseTest ->
+                runCatching {}
+                    .onFailure { errorSeriesCall.postValue(true) }
+                    .onSuccess {
+                        errorSeriesCall.postValue(false)
+                        marvelListAllSeries.postValue(responseTest.data.results)
+                    }
             }
         }
     }

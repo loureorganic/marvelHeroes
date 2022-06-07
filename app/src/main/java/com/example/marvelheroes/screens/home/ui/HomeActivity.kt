@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -49,6 +50,7 @@ class HomeActivity : ComponentActivity() {
                 val marvelListResult = viewModelHome.marvelList.observeAsState(null)
                 val marvelListAllComicsResult = viewModelHome.marvelListAllComics.observeAsState(null)
                 val marvelListAllSeries = viewModelHome.marvelListAllSeries.observeAsState(null)
+                val errorMarvelListAllSeries = viewModelHome.errorMarvelListAllSeries.observeAsState(null)
 
                 Surface(color = Color.White) {
                     Column(
@@ -75,7 +77,15 @@ class HomeActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(8.dp))
                         marvelListAllComicsResult.value?.let { CharacterRowList(cards = it) }
                         Spacer(modifier = Modifier.height(40.dp))
-                        marvelListAllSeries.value?.let { SeriesRowList(it)}
+
+                        errorMarvelListAllSeries.value?.let {
+                            if(it){
+                                marvelListAllSeries.value?.let { SeriesRowList(it)}
+                            }
+                            else {
+                                Text(text = "Bad request. Try later soon!")
+                            }
+                        }
                     }
                 }
             }
