@@ -2,9 +2,9 @@ package com.example.marvelheroes.screens.home.services
 
 import com.example.marvelheroes.repositories.network.api.models.characterModel.MarvelApi
 import com.example.marvelheroes.repositories.network.api.models.comicsModel.ComicsModel
+import com.example.marvelheroes.repositories.network.api.models.seriesModel.SeriesModel
 import com.example.marvelheroes.screens.home.repository.RepositoryHome
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.filter
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,6 +12,7 @@ interface ServicesHome {
     suspend fun getCharactersForSliding(): Flow<MarvelApi>
     suspend fun getAllCharacters(): Flow<MarvelApi>
     suspend fun getAllComics(): Flow<ComicsModel>
+    suspend fun getAllSeries(): Flow<SeriesModel>
 }
 
 @Singleton
@@ -26,6 +27,10 @@ class HomeServices @Inject constructor(private val repository: RepositoryHome) :
 
     override suspend fun getAllComics(): Flow<ComicsModel> {
         return repository.getAllComics()
+    }
+
+    override suspend fun getAllSeries(): Flow<SeriesModel> {
+        return repository.getAllSeries()
     }
 
 

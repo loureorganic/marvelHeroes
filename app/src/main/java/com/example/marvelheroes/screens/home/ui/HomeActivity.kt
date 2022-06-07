@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.screens.home.ui.compose.AutoSliding
 import com.example.marvelheroes.screens.home.ui.compose.CharacterRowList
 import com.example.marvelheroes.screens.home.ui.compose.MainAppBar
+import com.example.marvelheroes.screens.home.ui.compose.SeriesRowList
 import com.example.marvelheroes.screens.home.ui.ui.theme.MarvelHeroesTheme
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import com.example.marvelheroes.screens.home.viewmodel.ViewModelHome
@@ -36,6 +37,7 @@ class HomeActivity : ComponentActivity() {
 
         viewModelHome.getCharactersForSliding()
         viewModelHome.getAllComics()
+        viewModelHome.getAllSeries()
 
         val searchWidgetState by viewModelHome.searchWidgetState
         val searchTextState by viewModelHome.searchTextState
@@ -46,6 +48,7 @@ class HomeActivity : ComponentActivity() {
 
                 val marvelListResult = viewModelHome.marvelList.observeAsState(null)
                 val marvelListAllComicsResult = viewModelHome.marvelListAllComics.observeAsState(null)
+                val marvelListAllSeries = viewModelHome.marvelListAllSeries.observeAsState(null)
 
                 Surface(color = Color.White) {
                     Column(
@@ -68,11 +71,11 @@ class HomeActivity : ComponentActivity() {
                                 viewModelHome.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
                             }
                         )
-
                         marvelListResult.value?.let { AutoSliding(it) }
                         Spacer(modifier = Modifier.height(8.dp))
                         marvelListAllComicsResult.value?.let { CharacterRowList(cards = it) }
                         Spacer(modifier = Modifier.height(40.dp))
+                        marvelListAllSeries.value?.let { SeriesRowList(it)}
                     }
                 }
             }

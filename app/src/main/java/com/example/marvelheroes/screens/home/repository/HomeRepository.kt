@@ -1,8 +1,8 @@
 package com.example.marvelheroes.screens.home.repository
 
-import com.example.marvelheroes.repositories.network.api.models.characterModel.Comics
 import com.example.marvelheroes.repositories.network.api.models.characterModel.MarvelApi
 import com.example.marvelheroes.repositories.network.api.models.comicsModel.ComicsModel
+import com.example.marvelheroes.repositories.network.api.models.seriesModel.SeriesModel
 import com.example.marvelheroes.repositories.network.api.request.RetrofitInstance
 import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.convertToMd5
 import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.generateTimestamp
@@ -17,6 +17,7 @@ interface RepositoryHome {
     suspend fun getAllCharacters(): Flow<MarvelApi>
     suspend fun getAnCharacter(characterId: String): Flow<MarvelApi>
     suspend fun getAllComics(): Flow<ComicsModel>
+    suspend fun getAllSeries(): Flow<SeriesModel>
 }
 
 @Singleton
@@ -40,6 +41,11 @@ class HomeRepository @Inject constructor(private val retrofit: RetrofitInstance)
     override suspend fun getAllComics() : Flow<ComicsModel> = flow {
         val timestamp = generateTimestamp()
         emit(retrofit.api.getAllComics(hash = convertToMd5(hash(timestamp = timestamp)), timestamp = timestamp))
+    }
+
+    override suspend fun getAllSeries(): Flow<SeriesModel> = flow {
+        val timestamp = generateTimestamp()
+        emit(retrofit.api.getAllSeries(hash = convertToMd5(hash(timestamp = timestamp)), timestamp = timestamp))
     }
 
 }
