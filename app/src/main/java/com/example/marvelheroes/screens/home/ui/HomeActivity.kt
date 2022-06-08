@@ -23,6 +23,7 @@ class HomeActivity : ComponentActivity() {
 
         viewModelHome.getCharactersForSliding()
         viewModelHome.getAllComics()
+        viewModelHome.getAllSeries()
 
         setContent {
             MarvelHeroesTheme {

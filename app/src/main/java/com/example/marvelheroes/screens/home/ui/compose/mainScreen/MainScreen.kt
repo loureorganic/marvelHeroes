@@ -25,10 +25,15 @@ import javax.inject.Singleton
 fun MainScreen(viewModelHome: ViewModelHome) {
 
 
-    val marvelListResult = viewModelHome.marvelList.observeAsState(null)
+    val marvelListForSliding = viewModelHome.marvelListForSliding.observeAsState(null)
+    val errorMarvelListForSliding = viewModelHome.errorMarvelListForSliding.observeAsState(null)
+
     val marvelListAllComicsResult = viewModelHome.marvelListAllComics.observeAsState(null)
+    val errorMarvelListAllComics = viewModelHome.errorMarvelListAllComics.observeAsState(null)
+
     val marvelListAllSeries = viewModelHome.marvelListAllSeries.observeAsState(null)
     val errorMarvelListAllSeries = viewModelHome.errorMarvelListAllSeries.observeAsState(null)
+
 
     val searchWidgetState by viewModelHome.searchWidgetState
     val searchTextState by viewModelHome.searchTextState
@@ -53,9 +58,23 @@ fun MainScreen(viewModelHome: ViewModelHome) {
                 viewModelHome.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
             }
         )
-        marvelListResult.value?.let { AutoSliding(it) }
+
+        errorMarvelListForSliding.value?.let { resultError ->
+            if (resultError) {
+                Text(text = "Bad request. Try later soon!")
+            } else {
+                marvelListForSliding.value?.let { AutoSliding(it) }
+            }
+        }
         Spacer(modifier = Modifier.height(8.dp))
-        marvelListAllComicsResult.value?.let { CharacterRowList(cards = it) }
+
+        errorMarvelListAllComics.value?.let { resultError ->
+            if (resultError) {
+                Text(text = "Bad request. Try later soon!")
+            } else {
+                marvelListAllComicsResult.value?.let { CharacterRowList(cards = it) }
+            }
+        }
         Spacer(modifier = Modifier.height(40.dp))
 
         errorMarvelListAllSeries.value?.let { resultError ->

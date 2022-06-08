@@ -1,6 +1,7 @@
 package com.example.marvelheroes.screens.home.viewmodel
 
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -24,9 +25,12 @@ interface ViewModelHome {
     fun getAllCharacters()
     fun getAllComics()
     fun getAllSeries()
-    val marvelList: MutableLiveData<List<ResultCharacters>>
+    val marvelListForSliding: MutableLiveData<List<ResultCharacters>>
+    val errorMarvelListForSliding: MutableLiveData<Boolean>
     val marvelListAllCharacters: MutableLiveData<List<ResultCharacters>>
+    val errorMarvelListAllCharacters: MutableLiveData<Boolean>
     val marvelListAllComics: MutableLiveData<List<ResultComics>>
+    val errorMarvelListAllComics: MutableLiveData<Boolean>
     val marvelListAllSeries: MutableLiveData<List<ResultSeries>>
     val errorMarvelListAllSeries: MutableLiveData<Boolean>
     val searchWidgetState: State<SearchWidgetState>
@@ -57,49 +61,85 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
 
 
     private val marvelApi = MutableLiveData<List<ResultCharacters>>()
+    private val errorMarvelSlidingCall = MutableLiveData<Boolean>()
+    private val errorMarvelCharactersCall = MutableLiveData<Boolean>()
+
     private val comicsCall = MutableLiveData<List<ResultComics>>()
+    private val errorComicsCall = MutableLiveData<Boolean>()
+
     private val seriesCall = MutableLiveData<List<ResultSeries>>()
     private val errorSeriesCall = MutableLiveData<Boolean>()
 
-    override val marvelList: MutableLiveData<List<ResultCharacters>> = marvelApi
+
+    override val marvelListForSliding: MutableLiveData<List<ResultCharacters>> = marvelApi
+    override val errorMarvelListForSliding: MutableLiveData<Boolean> = errorMarvelSlidingCall
+
     override val marvelListAllCharacters: MutableLiveData<List<ResultCharacters>> = marvelApi
+    override val errorMarvelListAllCharacters: MutableLiveData<Boolean> = errorMarvelCharactersCall
+
     override val marvelListAllComics: MutableLiveData<List<ResultComics>> = comicsCall
+    override val errorMarvelListAllComics: MutableLiveData<Boolean> = errorComicsCall
+
     override val marvelListAllSeries: MutableLiveData<List<ResultSeries>> = seriesCall
     override val errorMarvelListAllSeries: MutableLiveData<Boolean> = errorSeriesCall
 
 
     override fun getCharactersForSliding() {
         viewModelScope.launch(Dispatchers.IO) {
-            services.getCharactersForSliding().filter { true }.collect { response ->
-                marvelList.postValue(response.data.results)
+            services.getCharactersForSliding().collect { response ->
+                runCatching {}
+                    .onFailure { error ->
+                        errorMarvelListForSliding.postValue(true)
+                        Log.e("MARVEL_HEROES - ERROR GET_CHARACTERS_FOR_SLIDING", ": $error")
+                    }
+                    .onSuccess { marvelListForSliding.postValue(response.data.results)
+                        errorMarvelListForSliding.postValue(false)}
+
             }
         }
     }
 
     override fun getAllCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
-            services.getAllCharacters().filter { true }.collect { response ->
-                marvelListAllCharacters.postValue(response.data.results)
+            services.getAllCharacters().collect { response ->
+                runCatching {}
+                    .onFailure { error ->
+                        errorMarvelListAllCharacters.postValue(true)
+                        Log.e("MARVEL_HEROES - ERROR GET_ALL_CHARACTERS", ": $error")
+                    }
+                    .onSuccess { marvelListAllCharacters.postValue(response.data.results)
+                        errorMarvelListAllCharacters.postValue(false)}
+
             }
         }
     }
 
     override fun getAllComics() {
         viewModelScope.launch(Dispatchers.IO) {
-            services.getAllComics().filter { true }.collect { response ->
-                marvelListAllComics.postValue(response.data.results)
+            services.getAllComics().collect { response ->
+                runCatching { }
+                    .onFailure { error ->
+                        errorMarvelListAllComics.postValue(true)
+                        Log.e("MARVEL_HEROES - ERROR GET_COMICS", ": $error")
+                    }
+                    .onSuccess {
+                        marvelListAllComics.postValue(response.data.results)
+                        errorMarvelListAllComics.postValue(false)
+                    }
             }
         }
     }
 
     override fun getAllSeries() {
         viewModelScope.launch(Dispatchers.IO) {
-            services.getAllSeries().collect { responseTest ->
+            services.getAllSeries().collect { response ->
                 runCatching {}
-                    .onFailure { errorSeriesCall.postValue(true) }
+                    .onFailure { error ->
+                        errorMarvelListAllSeries.postValue(true)
+                        Log.e("MARVEL_HEROES - ERROR GET_SERIES", ": $error")}
                     .onSuccess {
-                        errorSeriesCall.postValue(false)
-                        marvelListAllSeries.postValue(responseTest.data.results)
+                        errorMarvelListAllSeries.postValue(false)
+                        marvelListAllSeries.postValue(response.data.results)
                     }
             }
         }
