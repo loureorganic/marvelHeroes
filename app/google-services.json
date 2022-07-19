@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:272348128307:android:53b1db024754d6d3d7ef46",
         "android_client_info": {
-          "package_name": "com.example.marvelheroes"
+          "package_name": "com.example.marvelheroes.app.prod"
         }
       },
       "oauth_client": [

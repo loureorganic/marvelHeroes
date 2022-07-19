@@ -8,6 +8,10 @@ plugins {
 
 
 android {
+    signingConfigs {
+        release {
+        }
+    }
     compileSdk 32
 
     defaultConfig {
@@ -21,14 +25,39 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+        applicationIdSuffix '.app'
+        signingConfig signingConfigs.debug
+
+        buildConfigField("String", "API_KEY", "API_KEY")
+
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+        }
+        debug{
+            minifyEnabled false
+            debuggable true
         }
     }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        versionFree {
+            dimension "default"
+            applicationIdSuffix ".prod"
+        }
+
+        versionPaid{
+            dimension "default"
+            applicationIdSuffix ".dev"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
