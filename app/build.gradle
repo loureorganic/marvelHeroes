@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 22
 
     defaultConfig {
         applicationId "com.example.marvelheroes"
-        minSdk 26
+        minSdk 22
         targetSdk 32
         versionCode 1
         versionName "1.0"
