@@ -6,12 +6,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
-
 android {
-    signingConfigs {
-        release {
-        }
-    }
     compileSdk 32
 
     defaultConfig {
@@ -35,10 +30,24 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             debuggable false
+
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+            buildConfigField "String", "API_KEY_PUBLIC", "${properties.getProperty("API_KEY_PUBLIC")}"
+            buildConfigField "String", "API_KEY_PRIVATE", "${properties.getProperty("API_KEY_PRIVATE")}"
+            buildConfigField 'String', "BASE_URL", "\"${properties.getProperty("BASE_URL")}\""
         }
         debug{
             minifyEnabled false
             debuggable true
+
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+            buildConfigField 'String', "API_KEY_PUBLIC", "\"${properties.getProperty("API_KEY_PUBLIC")}\""
+            buildConfigField 'String', 'API_KEY_PRIVATE', "\"${properties.getProperty("API_KEY_PRIVATE")}\""
+            buildConfigField 'String', "BASE_URL", "\"${properties.getProperty("BASE_URL")}\""
         }
     }
 
@@ -146,7 +155,7 @@ dependencies {
 
 
     // Kotlin components
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
 
