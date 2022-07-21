@@ -27,15 +27,15 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             debuggable false
 
             Properties properties = new Properties()
             properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
-            buildConfigField "String", "API_KEY_PUBLIC", "${properties.getProperty("API_KEY_PUBLIC")}"
-            buildConfigField "String", "API_KEY_PRIVATE", "${properties.getProperty("API_KEY_PRIVATE")}"
+            buildConfigField "String", "API_KEY_PUBLIC", "${properties.getProperty("API_KEY_PUBLIC_RELEASE")}"
+            buildConfigField "String", "API_KEY_PRIVATE", "${properties.getProperty("API_KEY_PRIVATE_RELEASE")}"
             buildConfigField 'String', "BASE_URL", "\"${properties.getProperty("BASE_URL")}\""
         }
         debug{
@@ -45,8 +45,8 @@ android {
             Properties properties = new Properties()
             properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
-            buildConfigField 'String', "API_KEY_PUBLIC", "\"${properties.getProperty("API_KEY_PUBLIC")}\""
-            buildConfigField 'String', 'API_KEY_PRIVATE', "\"${properties.getProperty("API_KEY_PRIVATE")}\""
+            buildConfigField 'String', "API_KEY_PUBLIC", "\"${properties.getProperty("API_KEY_PUBLIC_DEBUG")}\""
+            buildConfigField 'String', 'API_KEY_PRIVATE', "\"${properties.getProperty("API_KEY_PRIVATE_DEBUG")}\""
             buildConfigField 'String', "BASE_URL", "\"${properties.getProperty("BASE_URL")}\""
         }
     }
