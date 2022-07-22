@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "272348128307",
+    "project_id": "marvelheroes-da3d9",
+    "storage_bucket": "marvelheroes-da3d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272348128307:android:53b1db024754d6d3d7ef46",
+        "android_client_info": {
+          "package_name": "com.example.marvelheroes.app.prod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272348128307-lg2hura6jgcop913h22p1eshkn2jkbfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEaI8-iNz0iUa66h3kmhdgrQhd7z-vxPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272348128307-lg2hura6jgcop913h22p1eshkn2jkbfl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
