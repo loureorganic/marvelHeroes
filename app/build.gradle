@@ -8,6 +8,7 @@ plugins {
 
 android {
     compileSdk 32
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.marvelheroes"
