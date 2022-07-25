@@ -9,7 +9,7 @@ MarvelHeroes app built with Kotlin
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/SplashScreen.png" width="250" alt="Pallete">
+  <img src="screenshots/SplashScreen.png" width="250" alt="PalleteScreen">
   <img src="screenshots/1.png" width="250" alt="SplashScreen">
   <img src="screenshots/2.png" width="250" alt="LoginScreen">
 </p>
