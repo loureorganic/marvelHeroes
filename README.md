@@ -32,17 +32,17 @@ The app develops with Kotlin using the Marvel API with the main function to pres
 - [x] [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - [ ] [Room](https://developer.android.com/topic/libraries/architecture/room)
 - [x] [MVVM](https://medium.com/android-dev-br/arquiteturas-em-android-mvvm-kotlin-android-architecture-components-databinding-lifecycle-d5e7a9023cf3)
-- [x] [Service Pattern] (https://java-design-patterns.com/patterns/service-layer/)
+- [x] [Service Pattern](https://java-design-patterns.com/patterns/service-layer/)
 - [x] [Android Architecture Components](https://medium.com/android-dev-br/arquiteturas-em-android-mvvm-kotlin-android-architecture-components-databinding-lifecycle-d5e7a9023cf3)
 - [x] [Coroutines](https://developer.android.com/topic/libraries/architecture/coroutines)
-- [x] [Marvel API] (https://developer.marvel.com/docs)
+- [x] [Marvel API](https://developer.marvel.com/docs)
 - [ ] [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 - [x] [Databinding](https://developer.android.com/topic/libraries/data-binding)
 - [x] [Retrofit](https://square.github.io/retrofit/)
 - [x] [Dagger Hilt](https://dagger.dev/hilt/)
-- [x] [Google Firebase] (https://firebase.google.com/docs)
-- [x] [SOLID] (https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
-- [x] [OOP] (https://developer.mozilla.org/pt-BR/docs/Glossary/OOP) 
+- [x] [Google Firebase](https://firebase.google.com/docs)
+- [x] [SOLID](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
+- [x] [OOP](https://developer.mozilla.org/pt-BR/docs/Glossary/OOP) 
 - [ ] [Ktlint](https://ktlint.github.io/)
 - [ ] JUnit
 - [ ] MotionLayout
@@ -50,7 +50,7 @@ The app develops with Kotlin using the Marvel API with the main function to pres
 - [ ] DayNight
 - [x] [Jetpack Compose](https://developer.android.com/jetpack/compose)
 - [x] [Paging Compose](https://developer.android.com/jetpack/androidx/releases/paging)
-- [x] [Build Variants] [UNDER DEVELOPMENT] (https://developer.android.com/studio/build/build-variants)
+- [x] [Build Variants - UNDER DEVELOPMENT](https://developer.android.com/studio/build/build-variants)
 
 ## Features
 
@@ -67,4 +67,4 @@ The app develops with Kotlin using the Marvel API with the main function to pres
 
 ## Design
 
-- Development with Figma (https://www.figma.com/file/VZ55Is7X2dR6yPwrPsZsNK/MarvelApp?node-id=136%3A2)
+- Development with Figma [LINK](https://www.figma.com/file/VZ55Is7X2dR6yPwrPsZsNK/MarvelApp?node-id=136%3A2)
