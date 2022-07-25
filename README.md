@@ -5,6 +5,9 @@
 <br>
 MarvelHeroes app built with Kotlin
 </h1>
+<p>
+The app develops with Kotlin using the Marvel API with the main function to present the stories, series, and characters of Marvel Studios.  The app is still under development but can be used right now with the initial functionalities. 
+</p>
 
 ## Screenshots
 
