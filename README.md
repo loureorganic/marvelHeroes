@@ -9,15 +9,15 @@ MarvelHeroes app built with Kotlin
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/" width="250" alt="SplashScreen">
-  <img src="screenshots/pokedex.png" width="250" alt="LoginScreen">
-  <img src="screenshots/pokedex-fab.png" width="250" alt="RegisterScreen">
+  <img src="screenshots/SplashScreen.png" width="250" alt="Pallete">
+  <img src="screenshots/1.png" width="250" alt="SplashScreen">
+  <img src="screenshots/2.png" width="250" alt="LoginScreen">
 </p>
 
 <p align="center">
-  <img src="screenshots/pokedex-fab-search.png" width="250" alt="HomeScreen">
-  <img src="screenshots/pokedex-fab-generation.png" width="250" alt="HomeScreen">
-  <img src="screenshots/pokemon-info-about.png" width="250" alt="SearchScreen">
+  <img src="screenshots/3.png" width="250" alt="RegisterScreen">
+  <img src="screenshots/4.png" width="250" alt="HomeScreen">
+  <img src="screenshots/5.png" width="250" alt="SearchScreen">
 </p>
 
 
