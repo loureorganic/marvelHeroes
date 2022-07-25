@@ -63,7 +63,7 @@ The app develops with Kotlin using the Marvel API with the main function to pres
 - [ ] Icon info - About
 - [ ] Icon info- Events
 - [ ] Icon info - Stories
-- [] UserScreen
+- [ ] UserScreen
 
 ## Design
 
