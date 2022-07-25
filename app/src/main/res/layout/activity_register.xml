@@ -25,7 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+
         android:layout_marginTop="6dp"
+        android:textColorHint="#9F9F9F"
         android:background="@drawable/background_input"
         android:hint="@string/insert_your_full_name"
         android:padding="10dp"
@@ -109,6 +111,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:textColorHint="#9F9F9F"
         android:layout_marginTop="6dp"
         android:background="@drawable/background_input"
         android:hint="@string/insert_your_email"
@@ -141,6 +144,7 @@
         android:layout_marginTop="6dp"
         android:background="@drawable/background_input"
         android:hint="@string/insert_your_password"
+        android:textColorHint="#9F9F9F"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -173,6 +177,7 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
+        android:textColorHint="#9F9F9F"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
