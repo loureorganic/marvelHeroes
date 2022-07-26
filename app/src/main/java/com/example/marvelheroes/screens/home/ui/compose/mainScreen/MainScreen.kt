@@ -1,6 +1,7 @@
 package com.example.marvelheroes.screens.home.ui.compose.mainScreen
 
-import android.util.Log
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -18,13 +19,13 @@ import com.example.marvelheroes.screens.home.ui.compose.MainAppBar
 import com.example.marvelheroes.screens.home.ui.compose.SeriesRowList
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import com.example.marvelheroes.screens.home.viewmodel.ViewModelHome
+import com.example.marvelheroes.screens.login.ui.LoginActivity
 import javax.inject.Singleton
+
 
 @Singleton
 @Composable
-fun MainScreen(viewModelHome: ViewModelHome) {
-
-
+fun MainScreen(viewModelHome: ViewModelHome, context: Context, function: (a : Intent) -> (Unit)) {
     val marvelListForSliding = viewModelHome.marvelListForSliding.observeAsState(null)
     val errorMarvelListForSliding = viewModelHome.errorMarvelListForSliding.observeAsState(null)
 
@@ -52,7 +53,7 @@ fun MainScreen(viewModelHome: ViewModelHome) {
                 viewModelHome.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
             },
             onSearchClicked = {
-                Log.d("Searched Text", it)
+                function(Intent(context, LoginActivity::class.java))
             },
             onSearchTriggered = {
                 viewModelHome.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)

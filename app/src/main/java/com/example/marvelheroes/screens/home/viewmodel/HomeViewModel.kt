@@ -46,6 +46,7 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
 
     private val _searchTextState: MutableState<String> =
         mutableStateOf(value = "")
+
     override val searchTextState: State<String> = _searchTextState
 
     override fun updateSearchWidgetState(newValue: SearchWidgetState) {

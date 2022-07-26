@@ -24,11 +24,10 @@ class HomeActivity : ComponentActivity() {
         viewModelHome.getCharactersForSliding()
         viewModelHome.getAllComics()
         viewModelHome.getAllSeries()
-
         setContent {
             MarvelHeroesTheme {
                 Surface(color = Color.White) {
-                    MainScreen(viewModelHome = viewModelHome)
+                    MainScreen(viewModelHome = viewModelHome, this@HomeActivity, ::startActivity)
                 }
             }
         }
