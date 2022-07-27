@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,6 +23,7 @@ fun SeriesRowList(cards: List<ResultSeries>) {
             text = "Series",
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
+            color = Color.White,
             modifier = Modifier.padding(8.dp)
         )
         LazyRow(modifier = Modifier.height(250.dp)) {

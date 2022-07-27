@@ -13,13 +13,14 @@ import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.seriesModel.ResultSeries
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
+import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @SuppressLint("ResourceType")
 @Composable
 fun SerieCard(card: ResultSeries) {
-    Box(modifier = Modifier.background(Color.White).padding(8.dp).width(140.dp)) {
+    Box(modifier = Modifier.background(darkBackground).padding(8.dp).width(140.dp)) {
         //Image
         val url = card.thumbnail.path.replaceRange(
             4,

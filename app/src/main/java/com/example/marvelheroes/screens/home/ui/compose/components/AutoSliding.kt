@@ -19,11 +19,13 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
+import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
@@ -74,12 +76,13 @@ fun AutoSliding(list: List<ResultCharacters>) {
                         }
                         .fillMaxWidth()
                         .padding(15.dp, 0.dp, 15.dp, 0.dp),
+
                     shape = RoundedCornerShape(20.dp)
                 ) {
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(Color.White)
+                            .background(darkBlue)
                     ) {
                         val img2 = listFiltered[page]
                         val url = img2.thumbnail.path.replaceRange(
@@ -104,13 +107,14 @@ fun AutoSliding(list: List<ResultCharacters>) {
                         modifier = Modifier
                             .align(Alignment.BottomStart)
                             .height(48.dp)
-                            .background(Color.White)
+                            .background(darkBlue)
                             .fillMaxWidth()
                     ) {
                         Text(
                             text = list[page].name,
                             style = MaterialTheme.typography.h5,
-                            color = Color.Black,
+                            color = Color.White,
+                            textAlign = TextAlign.Center,
                             fontWeight = FontWeight.Bold
                         )
                     }

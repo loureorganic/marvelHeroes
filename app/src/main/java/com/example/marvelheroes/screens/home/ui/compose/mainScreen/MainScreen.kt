@@ -20,6 +20,7 @@ import com.example.marvelheroes.screens.home.ui.compose.SeriesRowList
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import com.example.marvelheroes.screens.home.viewmodel.ViewModelHome
 import com.example.marvelheroes.screens.login.ui.LoginActivity
+import com.example.marvelheroes.screens.search.ui.SearchActivity
 import javax.inject.Singleton
 
 
@@ -53,7 +54,7 @@ fun MainScreen(viewModelHome: ViewModelHome, context: Context, function: (a : In
                 viewModelHome.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
             },
             onSearchClicked = {
-                function(Intent(context, LoginActivity::class.java))
+                function(Intent(context, SearchActivity::class.java))
             },
             onSearchTriggered = {
                 viewModelHome.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)

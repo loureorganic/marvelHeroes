@@ -19,11 +19,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
+import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
+import okhttp3.internal.wait
 
 
 @Composable
 fun MarvelHeaderApp(onSearchClicked: () -> Unit) {
-    TopAppBar(backgroundColor = Color.Red) {
+    TopAppBar(backgroundColor = darkBlue) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
@@ -60,7 +62,7 @@ fun SearchAppBar(
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .height(56.dp), elevation = AppBarDefaults.TopAppBarElevation, color = Color.Red
+            .height(56.dp), elevation = AppBarDefaults.TopAppBarElevation, color = darkBlue
     ) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
@@ -77,7 +79,8 @@ fun SearchAppBar(
             },
             textStyle = TextStyle(
                 fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                fontFamily = MaterialTheme.typography.subtitle1.fontFamily
+                fontFamily = MaterialTheme.typography.subtitle1.fontFamily,
+                color = Color.White
             ),
             singleLine = true,
             leadingIcon = {
@@ -112,16 +115,6 @@ fun SearchAppBar(
             )
         )
     }
-}
-
-@Composable
-@Preview
-fun SearchAppBarPreview() {
-    SearchAppBar(
-        text = "Some random",
-        onTextChange = {},
-        onCloseClicked = { },
-        onSearchClicked = {})
 }
 
 @Composable

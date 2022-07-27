@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.comicsModel.ResultComics
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
+import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
+import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
@@ -22,7 +24,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @SuppressLint("ResourceType")
 @Composable
 fun CharacterCard(card: ResultComics) {
-    Box(modifier = Modifier.background(Color.White).padding(8.dp).width(140.dp)) {
+    Box(modifier = Modifier.background(darkBackground).padding(8.dp).width(140.dp)) {
         //Image
         val url = card.thumbnail.path.replaceRange(
             4,

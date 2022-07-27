@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarvelHeroes">
         <activity
-            android:name=".SearchActivity"
+            android:name=".screens.search.ui.SearchActivity"
             android:exported="false"
             android:label="@string/title_activity_search"
             android:theme="@style/Theme.MarvelHeroes" />
@@ -26,18 +26,19 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".screens.home.ui.HomeActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".screens.splash.ui.SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
