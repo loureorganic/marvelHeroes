@@ -1,5 +1,7 @@
 package com.example.marvelheroes.screens.home.ui.compose
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
@@ -18,7 +20,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.R
+import com.example.marvelheroes.screens.home.ui.HomeActivity
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
+import com.example.marvelheroes.screens.search.ui.SearchActivity
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import okhttp3.internal.wait
 
@@ -58,6 +62,8 @@ fun SearchAppBar(
     onTextChange: (String) -> Unit,
     onCloseClicked: () -> Unit,
     onSearchClicked: (String) -> Unit,
+    context: Context,
+    function: (a: Intent) -> (Unit)
 ) {
     Surface(
         modifier = Modifier
@@ -98,11 +104,12 @@ fun SearchAppBar(
                         onTextChange("")
                     } else {
                         onCloseClicked()
+                        function(Intent(context, HomeActivity::class.java))
                     }
                 }) {
                     Icon(
                         imageVector = Icons.Default.Close,
-                        contentDescription = "CLose Icon",
+                        contentDescription = "Close Icon",
                         tint = Color.White
                     )
                 }
@@ -124,7 +131,9 @@ fun MainAppBar(
     onTextChange: (String) -> Unit,
     onCloseClicked: () -> Unit,
     onSearchClicked: (String) -> Unit,
-    onSearchTriggered: () -> Unit
+    onSearchTriggered: () -> Unit,
+    context: Context,
+    function: (a: Intent) -> (Unit)
 ) {
     when (searchWidgetState) {
         SearchWidgetState.CLOSED -> {
@@ -137,7 +146,9 @@ fun MainAppBar(
                 text = searchTextState,
                 onTextChange = onTextChange,
                 onCloseClicked = onCloseClicked,
-                onSearchClicked = onSearchClicked
+                onSearchClicked = onSearchClicked,
+                context = context,
+                function = function
             )
         }
     }

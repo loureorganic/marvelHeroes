@@ -114,7 +114,7 @@ fun AutoSliding(list: List<ResultCharacters>) {
                             text = list[page].name,
                             style = MaterialTheme.typography.h5,
                             color = Color.White,
-                            textAlign = TextAlign.Center,
+                            textAlign = TextAlign.Left,
                             fontWeight = FontWeight.Bold
                         )
                     }
