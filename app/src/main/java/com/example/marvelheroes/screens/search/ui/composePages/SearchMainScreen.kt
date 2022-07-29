@@ -13,7 +13,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.marvelheroes.screens.home.ui.HomeActivity
 import com.example.marvelheroes.screens.home.ui.compose.MainAppBar
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import com.example.marvelheroes.screens.home.viewmodel.ViewModelHome
@@ -48,7 +47,6 @@ fun searchMainScreen(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
     ) {
-
         MainAppBar(
             context = context,
             function = function,
@@ -76,9 +74,12 @@ fun searchMainScreen(
                 searchCopyrightData.value?.let { copyrightData ->
                     marvelListForSearchCharacter.value?.let { resultCharacter ->
                         if (resultCharacter.isEmpty()) {
-
+                            Text(text = "Type something to search...")
                         } else {
-                            characterCard( resultCharacter, copyrightData)
+                            characterCard(
+                                resultCharacter, copyrightData, context = context,
+                                function = function,
+                            )
                         }
                     }
                 }

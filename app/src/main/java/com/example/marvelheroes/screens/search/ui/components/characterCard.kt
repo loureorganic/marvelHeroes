@@ -1,9 +1,12 @@
 package com.example.marvelheroes.screens.search.ui.components
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -25,14 +28,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
+import com.example.marvelheroes.screens.character.ui.CharacterActivity
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
+import com.example.marvelheroes.screens.search.ui.SearchActivity
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
-@OptIn(ExperimentalCoroutinesApi::class, ExperimentalMaterial3Api::class)
+@OptIn(
+    ExperimentalCoroutinesApi::class, ExperimentalMaterial3Api::class,
+    ExperimentalMaterialApi::class
+)
 @Composable
-fun characterCard(item: List<ResultCharacters>, copyrightData: String) {
+fun characterCard(
+    item: List<ResultCharacters>, copyrightData: String, context: Context,
+    function: (a: Intent) -> (Unit)
+) {
     Column(
         modifier = Modifier
             .height(520.dp)
@@ -42,7 +53,10 @@ fun characterCard(item: List<ResultCharacters>, copyrightData: String) {
         Card(
             modifier = Modifier
                 .height(300.dp)
-                .background(darkBlue)
+                .background(darkBlue),
+            onClick = {
+                function(Intent(context, CharacterActivity::class.java))
+            }
         ) {
             Box(
                 modifier = Modifier
@@ -52,7 +66,7 @@ fun characterCard(item: List<ResultCharacters>, copyrightData: String) {
                     4,
                     4,
                     "s"
-                ) + "/standard_fantastic.${item[0].thumbnail.extension}"
+                ) + "/standard_xlarge.${item[0].thumbnail.extension}"
                 val image =
                     loadPicture(
                         url = url,
@@ -90,7 +104,7 @@ fun characterCard(item: List<ResultCharacters>, copyrightData: String) {
                     fontFamily = FontFamily.Default
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = item[0].description, color = Color.White, maxLines = 2)
+                Text(text = "${item[0].description}", color = Color.White, maxLines = 2)
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(
                     horizontalArrangement = Arrangement.Center
@@ -134,7 +148,7 @@ fun characterCard(item: List<ResultCharacters>, copyrightData: String) {
                         modifier = Modifier
                             .weight(1f)
                             .padding(4.dp),
-                        onClick = { /*TODO*/ },
+                        onClick = {function(Intent(context, CharacterActivity::class.java)) },
                         colors = AssistChipDefaults.assistChipColors(leadingIconContentColor = Color.White),
                         leadingIcon = {
                             Icon(
