@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -73,54 +74,50 @@ fun characterCard(item: List<ResultCharacters>, copyrightData: String) {
         Card(
             modifier = Modifier
                 .height(220.dp)
+                .padding(8.dp)
                 .background(darkBlue)
         ) {
             Column(
                 modifier = Modifier
-                    .background(darkBlue)
-                    .padding(8.dp)
+                    .background(darkBlue),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = item[0].name,
                     color = Color.White,
                     fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Default
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(text = item[0].description, color = Color.White, maxLines = 2)
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        modifier = Modifier
-                            .weight(1f),
                         text = "Series: ${item[0].series.available} |",
                         color = Color.LightGray,
                         fontSize = 14.sp,
                         fontFamily = FontFamily.Default
                     )
                     Text(
-                        modifier = Modifier
-                            .weight(1f),
-                        text = "Stories: ${item[0].stories.available} |",
+                        text = " Stories: ${item[0].stories.available} |",
                         color = Color.LightGray,
                         fontSize = 14.sp,
                         fontFamily = FontFamily.Default
                     )
                     Text(
-                        modifier = Modifier
-                            .weight(1f),
-                        text = "Events: ${item[0].events.available} ",
+                        text = " Events: ${item[0].events.available}",
                         color = Color.LightGray,
                         fontSize = 14.sp,
                         fontFamily = FontFamily.Default
                     )
                 }
                 Spacer(modifier = Modifier.height(8.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    horizontalArrangement = Arrangement.Center
+                ) {
                     Text(
                         text = copyrightData,
                         color = Color.LightGray,
