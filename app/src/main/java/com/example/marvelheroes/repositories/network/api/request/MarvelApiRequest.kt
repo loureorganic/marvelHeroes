@@ -28,7 +28,7 @@ interface MarvelApiRequest {
         @Query("offset") offset: Int = 0,
     ): MarvelApi
 
-    @GET("/v1/public/characters/{characterId}")
+    @GET("/v1/public/characters/")
     suspend fun getAnCharacters(
         @Path("characterId") characterId : String,
         @Query("ts") timestamp: String,
@@ -61,4 +61,15 @@ interface MarvelApiRequest {
         @Query("offset") offset: Int = 0,
         @Query("name") name: String
     ): MarvelApi
+
+    @GET("/v1/public/stories")
+    suspend fun getCharacterSeries(
+        @Query("ts") timestamp: String,
+        @Query("apikey") apiKey: String = PUBLIC_KEY,
+        @Query("hash") hash: String,
+        @Query("limit") count: Int = 60,
+        @Query("offset") offset: Int = 0,
+        @Query("name") name: String
+    ): MarvelApi
+
 }

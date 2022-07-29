@@ -7,7 +7,7 @@ import java.time.Instant
 import java.time.format.DateTimeFormatter
 
 object ApiConstants {
-    const val BASE_URL = BuildConfig.BASE_URL
+    const val BASE_URL: String = BuildConfig.BASE_URL
     const val PRIVATE_KEY = BuildConfig.API_KEY_PRIVATE
     const val PUBLIC_KEY = BuildConfig.API_KEY_PUBLIC
 

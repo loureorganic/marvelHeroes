@@ -30,7 +30,6 @@ import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
 import com.example.marvelheroes.screens.character.ui.CharacterActivity
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
-import com.example.marvelheroes.screens.search.ui.SearchActivity
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -104,7 +103,7 @@ fun characterCard(
                     fontFamily = FontFamily.Default
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = "${item[0].description}", color = Color.White, maxLines = 2)
+                Text(text = item[0].description, color = Color.White, maxLines = 2)
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(
                     horizontalArrangement = Arrangement.Center

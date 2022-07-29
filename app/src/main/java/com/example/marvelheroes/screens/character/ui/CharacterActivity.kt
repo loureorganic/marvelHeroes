@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.marvelheroes.screens.character.ui.composePages.characterMainScreen
 import com.example.marvelheroes.screens.character.ui.ui.theme.MarvelHeroesTheme
+import com.example.marvelheroes.screens.character.viewmodel.ViewModelCharacter
 import com.example.marvelheroes.screens.home.viewmodel.ViewModelHome
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
 import com.example.marvelheroes.screens.search.viewmodel.ViewModelSearch
@@ -28,6 +29,9 @@ class CharacterActivity : ComponentActivity() {
     lateinit var viewModelSearch: ViewModelSearch
 
 
+    @Inject
+    lateinit var viewModelCharacter : ViewModelCharacter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,7 +40,7 @@ class CharacterActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(), color = darkBackground) {
 
                     viewModelSearch.marvelListForSearchCharacter.value?.let { character ->
-                        characterMainScreen(character)
+                        characterMainScreen(character, viewModelCharacter)
                     }
                 }
             }

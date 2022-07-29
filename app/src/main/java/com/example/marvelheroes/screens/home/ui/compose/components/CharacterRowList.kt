@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.marvelheroes.repositories.network.api.models.comicsModel.ResultComics
+import com.example.marvelheroes.screens.home.ui.compose.components.CharacterCard
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 
 @Composable
