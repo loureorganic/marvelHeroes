@@ -1,5 +1,6 @@
 package com.example.marvelheroes.screens.character.ui.composePages
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -19,8 +20,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.marvelheroes.R
+import com.example.marvelheroes.repositories.network.api.models.characterModel.ItemXX
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
-import com.example.marvelheroes.screens.character.model.Item
 import com.example.marvelheroes.screens.character.viewmodel.ViewModelCharacter
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
@@ -108,18 +109,17 @@ fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewMo
         ){
             Text("Stories", fontSize = 24.sp, color = Color.White)
             Spacer(modifier = Modifier.height(8.dp))
-            //characterSeriesList()
+            //characterSeriesList(item[0].series.items)
             item[0].series.items.forEach { item ->
-                item.resourceURI
-
-
+                Log.i("TAG URI", item.resourceURI)
+                viewModelCharacter.getCharacterSeries(item.resourceURI)
             }
         }
     }
 }
 
 @Composable
-fun characterSeriesList(itemsList: List<Item>){
+fun characterSeriesList(itemsList: List<ItemXX>,viewModelCharacter: ViewModelCharacter){
     Column() {
         Text(
             text = "Comics",
@@ -130,7 +130,7 @@ fun characterSeriesList(itemsList: List<Item>){
         )
         LazyColumn(modifier = Modifier.height(250.dp).background(darkBlue)) {
             items(itemsList) { card ->
-                //characterSerieCard(card)
+               //characterSeriesCard(card, viewModelCharacter)
             }
         }
     }
@@ -138,14 +138,11 @@ fun characterSeriesList(itemsList: List<Item>){
 
 /*
 @Composable
-fun characterSerieCard(card: Item){
+fun characterSeriesCard(item: ItemXX, viewModelCharacter: ViewModelCharacter) {
     Box(modifier = Modifier.background(darkBackground).padding(8.dp).width(140.dp)) {
-        val url = card.thumbnail.path.replaceRange(
-            4,
-            4,
-            "s"
-        ) + "/portrait_uncanny.${card.thumbnail.extension}"
-        val image = loadPicture(url = url, defaultImage = R.drawable.marvel_heroes_placeholder).value
+        viewModelCharacter.getCharacterSeries(item.resourceURI)
+        val image =
+            loadPicture(url = url, defaultImage = R.drawable.marvel_heroes_placeholder).value
         image?.let { img ->
             Image(
                 bitmap = img.asImageBitmap(),
@@ -159,4 +156,5 @@ fun characterSerieCard(card: Item){
         // Add a horizontal space between the image and the column
         Spacer(modifier = Modifier.width(8.dp))
 
-    }*/
+    }
+}*/

@@ -1,4 +1,4 @@
-package com.example.marvelheroes.screens.character.model
+package com.example.marvelheroes.screens.character.model.character
 
 data class Data(
     val count: Int,

@@ -5,6 +5,7 @@ import com.example.marvelheroes.repositories.network.api.models.comicsModel.Comi
 import com.example.marvelheroes.repositories.network.api.models.seriesModel.SeriesModel
 import com.example.marvelheroes.repositories.network.api.models.storiesModel.StorieModel
 import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.PUBLIC_KEY
+import com.example.marvelheroes.screens.character.model.series.seriesOfCharacter
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -69,7 +70,7 @@ interface MarvelApiRequest {
         @Query("hash") hash: String,
         @Query("limit") count: Int = 60,
         @Query("offset") offset: Int = 0,
-        @Query("name") name: String
-    ): MarvelApi
+        @Query("seriesId") seriesId: String
+    ): seriesOfCharacter
 
 }

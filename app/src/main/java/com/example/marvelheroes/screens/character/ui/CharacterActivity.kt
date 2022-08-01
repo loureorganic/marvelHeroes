@@ -30,7 +30,7 @@ class CharacterActivity : ComponentActivity() {
 
 
     @Inject
-    lateinit var viewModelCharacter : ViewModelCharacter
+    lateinit var viewModelCharacter: ViewModelCharacter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
