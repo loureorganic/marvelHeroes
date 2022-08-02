@@ -198,5 +198,10 @@ dependencies {
     implementation "androidx.compose.material3:material3-window-size-class:1.0.0-alpha12"
     implementation "com.google.accompanist:accompanist-flowlayout:0.24.8-beta"
 
+    implementation 'androidx.ui:ui-framework:0.1.0-dev07'
+    implementation 'androidx.ui:ui-layout:0.1.0-dev07'
+    implementation 'androidx.ui:ui-foundation:0.1.0-dev07'
+    implementation 'androidx.ui:ui-material:0.1.0-dev07'
+    implementation 'androidx.ui:ui-tooling:0.1.0-dev07'
 
 }

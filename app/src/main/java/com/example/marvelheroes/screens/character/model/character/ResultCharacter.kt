@@ -1,6 +1,6 @@
 package com.example.marvelheroes.screens.character.model.character
 
-data class Result(
+data class ResultCharacter(
     val comics: Comics,
     val description: String,
     val events: Events,
