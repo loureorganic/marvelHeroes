@@ -18,10 +18,6 @@ class CharacterRepository @Inject constructor(private val retrofit: RetrofitInst
 
     override suspend fun getCharacterSeries(seriesId: String): Flow<seriesOfCharacter> = flow {
         val timestamp = ApiConstants.generateTimestamp()
-        emit(retrofit.api.getCharacterSeries(hash = ApiConstants.convertToMd5(
-            ApiConstants.hash(
-                timestamp = timestamp
-            )
-        ), timestamp = timestamp, seriesId = seriesId))
+        emit(retrofit.api.getCharacterSeries(hash = ApiConstants.convertToMd5(ApiConstants.hash(timestamp = timestamp)), timestamp = timestamp, id = seriesId))
     }
 }

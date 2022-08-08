@@ -12,8 +12,7 @@ interface ServicesCharacter {
 }
 
 @Singleton
-class CharacterServices @Inject constructor(private val repository: RepositoryCharacter) :
-    ServicesCharacter {
+class CharacterServices @Inject constructor(private val repository: RepositoryCharacter) : ServicesCharacter {
 
     override suspend fun getCharacterSeries(resourceURI: String): Flow<seriesOfCharacter> {
         val storyId = resourceURI.substring(43)

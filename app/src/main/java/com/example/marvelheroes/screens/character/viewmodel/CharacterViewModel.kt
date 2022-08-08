@@ -1,5 +1,6 @@
 package com.example.marvelheroes.screens.character.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,9 +14,10 @@ import javax.inject.Inject
 
 interface ViewModelCharacter {
     fun getCharacterSeries(resourceURI: String)
-    val marvelListCharaterSeries: MutableLiveData<List<ResultSeries>>
+    val marvelListCharacterComics: MutableLiveData<ArrayList<List<ResultSeries>>>
+    val marvelListCharaterSeries: MutableLiveData<ArrayList<List<ResultSeries>>>
     val errorMarvelListCharaterSeries: MutableLiveData<Boolean>
-
+    fun getValuesOfMarvelListCharacterSeries()
 }
 
 @HiltViewModel
@@ -23,8 +25,14 @@ class CharacterViewModel @Inject constructor(private val services: ServicesChara
     ViewModelCharacter {
 
 
-    private val characterSeries = MutableLiveData<List<ResultSeries>>()
-    override val marvelListCharaterSeries: MutableLiveData<List<ResultSeries>> = characterSeries
+    val list:ArrayList<List<ResultSeries>> = ArrayList<List<ResultSeries>>()
+
+    private val characterSeries = MutableLiveData<ArrayList<List<ResultSeries>>>()
+    override val marvelListCharaterSeries: MutableLiveData<ArrayList<List<ResultSeries>>> = characterSeries
+
+    private val characterComics = MutableLiveData<ArrayList<List<ResultSeries>>>()
+    override val marvelListCharacterComics: MutableLiveData<ArrayList<List<ResultSeries>>> = characterComics
+
 
     private val errorCharacterSeries = MutableLiveData<Boolean>()
     override val errorMarvelListCharaterSeries: MutableLiveData<Boolean> = errorCharacterSeries
@@ -34,17 +42,19 @@ class CharacterViewModel @Inject constructor(private val services: ServicesChara
             services.getCharacterSeries(resourceURI).collect { result ->
                 runCatching { }
                     .onSuccess {
-                        marvelListCharaterSeries.postValue(result.data.results)
-                        errorMarvelListCharaterSeries.postValue(false)
+                        list.add(result.data.results)
                     }
                     .onFailure {
-                        marvelListCharaterSeries.postValue(result.data.results)
-                        errorMarvelListCharaterSeries.postValue(true)
                     }
             }
-
         }
     }
 
+    override fun getValuesOfMarvelListCharacterSeries(){
+        marvelListCharaterSeries.postValue(list)
+    }
 
+    fun getValuesOfMarvelListCharacterComics(){
+
+    }
 }

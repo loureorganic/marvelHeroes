@@ -63,14 +63,14 @@ interface MarvelApiRequest {
         @Query("name") name: String
     ): MarvelApi
 
-    @GET("/v1/public/stories")
+    @GET("/v1/public/series")
     suspend fun getCharacterSeries(
         @Query("ts") timestamp: String,
         @Query("apikey") apiKey: String = PUBLIC_KEY,
         @Query("hash") hash: String,
         @Query("limit") count: Int = 60,
         @Query("offset") offset: Int = 0,
-        @Query("seriesId") seriesId: String
+        @Query("id") id: String
     ): seriesOfCharacter
 
 }

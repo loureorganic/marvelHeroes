@@ -13,7 +13,6 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.marvelheroes.R
@@ -22,6 +21,7 @@ import com.example.marvelheroes.screens.character.ui.components.PagerContent
 import com.example.marvelheroes.screens.character.ui.components.TabsRow
 import com.example.marvelheroes.screens.character.viewmodel.ViewModelCharacter
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
+import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
@@ -29,15 +29,16 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @OptIn(ExperimentalCoroutinesApi::class, ExperimentalPagerApi::class)
 @Composable
-fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewModelCharacter){
+fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewModelCharacter) {
     Column(
         modifier = Modifier
-            .background(darkBlue)
-    ){
+            .background(darkBackground)
+    ) {
         Card(
             modifier = Modifier
                 .height(350.dp)
-                .background(darkBlue),
+                .align(Alignment.CenterHorizontally)
+                .background(darkBackground),
         ) {
             Box(
                 modifier = Modifier
@@ -49,9 +50,9 @@ fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewMo
                     "s"
                 ) + "/standard_amazing.${item[0].thumbnail.extension}"
                 val image = loadPicture(
-                        url = url,
-                        defaultImage = R.drawable.marvel_heroes_placeholder
-                    ).value
+                    url = url,
+                    defaultImage = R.drawable.marvel_heroes_placeholder
+                ).value
                 image?.let { img ->
                     Image(
                         bitmap = img.asImageBitmap(),
@@ -68,7 +69,8 @@ fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewMo
         Column(
             modifier = Modifier
                 .padding(16.dp)
-                .background(darkBlue),
+                .background(darkBackground)
+                .align(Alignment.CenterHorizontally),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -78,8 +80,6 @@ fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewMo
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Default
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "${item[0].description}...", color = Color.White, fontSize = 16.sp,textAlign = TextAlign.Justify)
             Spacer(modifier = Modifier.height(8.dp))
             Row(
                 horizontalArrangement = Arrangement.Center
@@ -104,12 +104,10 @@ fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewMo
                 )
             }
         }
-        Column(
-        modifier = Modifier.height(300.dp)){
-           // CardSections(item[0])
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             val pagerState = rememberPagerState(pageCount = 3)
             TabsRow(pagerState)
-            PagerContent(pagerState)
+            PagerContent(pagerState, item[0], viewModelCharacter)
         }
     }
 }
