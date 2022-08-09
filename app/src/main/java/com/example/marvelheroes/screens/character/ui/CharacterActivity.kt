@@ -45,10 +45,14 @@ class CharacterActivity : ComponentActivity() {
                 }
 
                 viewModelSearch.marvelListForSearchCharacter.value?.let { character ->
-                    Log.i("INFORMATION", "SERIE ${character[0].series.items.size}")
                     character[0].series.items.forEach { item ->
-                        //Cada item de serie fará uma requisição
                         viewModelCharacter.getCharacterSeries(item.resourceURI)
+                    }
+                }
+
+                viewModelSearch.marvelListForSearchCharacter.value?.let { character ->
+                    character[0].comics.items.forEach { item ->
+                        viewModelCharacter.getCharacterComics(item.resourceURI)
                     }
                 }
             }

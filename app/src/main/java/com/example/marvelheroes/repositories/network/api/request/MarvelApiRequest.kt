@@ -1,11 +1,9 @@
 package com.example.marvelheroes.repositories.network.api.request
 
+import com.example.marvelheroes.model.comics.ComicsModel
 import com.example.marvelheroes.repositories.network.api.models.characterModel.MarvelApi
-import com.example.marvelheroes.repositories.network.api.models.comicsModel.ComicsModel
-import com.example.marvelheroes.repositories.network.api.models.seriesModel.SeriesModel
-import com.example.marvelheroes.repositories.network.api.models.storiesModel.StorieModel
 import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.PUBLIC_KEY
-import com.example.marvelheroes.screens.character.model.series.seriesOfCharacter
+import com.example.marvelheroes.model.series.SeriesModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -71,6 +69,17 @@ interface MarvelApiRequest {
         @Query("limit") count: Int = 60,
         @Query("offset") offset: Int = 0,
         @Query("id") id: String
-    ): seriesOfCharacter
+    ): SeriesModel
+
+    @GET("/v1/public/comics")
+    suspend fun getCharacterComics(
+        @Query("ts") timestamp: String,
+        @Query("apikey") apiKey: String = PUBLIC_KEY,
+        @Query("hash") hash: String,
+        @Query("limit") count: Int = 60,
+        @Query("offset") offset: Int = 0,
+        @Query("id") id: String
+    ): ComicsModel
+
 
 }

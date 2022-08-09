@@ -1,8 +1,8 @@
 package com.example.marvelheroes.screens.home.services
 
+import com.example.marvelheroes.model.comics.ComicsModel
+import com.example.marvelheroes.model.series.SeriesModel
 import com.example.marvelheroes.repositories.network.api.models.characterModel.MarvelApi
-import com.example.marvelheroes.repositories.network.api.models.comicsModel.ComicsModel
-import com.example.marvelheroes.repositories.network.api.models.seriesModel.SeriesModel
 import com.example.marvelheroes.screens.home.repository.RepositoryHome
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

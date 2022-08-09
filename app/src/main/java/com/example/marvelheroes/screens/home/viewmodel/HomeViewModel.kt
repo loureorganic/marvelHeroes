@@ -7,9 +7,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.marvelheroes.model.comics.ResultComics
+import com.example.marvelheroes.model.series.ResultSeries
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
-import com.example.marvelheroes.repositories.network.api.models.comicsModel.ResultComics
-import com.example.marvelheroes.repositories.network.api.models.seriesModel.ResultSeries
 import com.example.marvelheroes.screens.home.services.ServicesHome
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import dagger.hilt.android.lifecycle.HiltViewModel

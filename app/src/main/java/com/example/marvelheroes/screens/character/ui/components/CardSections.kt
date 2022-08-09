@@ -5,8 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -21,13 +19,12 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.marvelheroes.R
+import com.example.marvelheroes.model.comics.ResultComics
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
-import com.example.marvelheroes.screens.character.model.series.ResultSeries
+import com.example.marvelheroes.model.series.ResultSeries
 import com.example.marvelheroes.screens.character.viewmodel.ViewModelCharacter
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
-import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -118,7 +115,7 @@ fun PagerContent(
                     SeriesSection(viewModelCharacter)
                 }
                 2 -> {
-                    ComicsSection(character, viewModelCharacter)
+                    ComicsSection(viewModelCharacter)
                 }
             }
         }
@@ -151,7 +148,7 @@ fun SeriesSection(viewModelCharacter: ViewModelCharacter) {
         item {
             FlowRow(modifier = Modifier.background(darkBlue)) {
                 viewModelCharacter.getValuesOfMarvelListCharacterSeries()
-                viewModelCharacter.marvelListCharaterSeries.value?.let {  it ->
+                viewModelCharacter.marvelListCharacterSeries.value?.let {  it ->
                     it.forEach { result ->
                         GridItem(data = result)
                     }
@@ -160,24 +157,6 @@ fun SeriesSection(viewModelCharacter: ViewModelCharacter) {
         }
     }
 }
-
-
-
-@Composable
-internal fun SampleContent(number : Int) {
-    repeat(number) {
-        Box(
-            modifier = Modifier
-                .size(64.dp)
-                .background(Blue)
-                .border(width = 1.dp, color = DarkGray),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(it.toString())
-        }
-    }
-}
-
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @Composable
@@ -211,19 +190,51 @@ fun GridItem(data: List<ResultSeries>) {
         }
     }
 }
+@OptIn(ExperimentalCoroutinesApi::class)
+@Composable
+fun GridItemComics(data: List<ResultComics>) {
+    data.map { item ->
+        Card(
+            modifier = Modifier
+                .width(130.dp)
+                .height(170.dp)
+                .padding(4.dp),
+        ) {
+            val url = item.thumbnail.path.replaceRange(
+                4,
+                4,
+                "s"
+            ) + "/standard_amazing.${item.thumbnail.extension}"
+            val image = loadPicture(
+                url = url,
+                defaultImage = R.drawable.marvel_heroes_placeholder
+            ).value
+            image?.let { img ->
+                Image(
+                    bitmap = img.asImageBitmap(),
+                    contentDescription = "Description",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(),
+                    contentScale = ContentScale.Crop,
+                )
+            }
+        }
+    }
+}
 
 @Composable
-fun ComicsSection(character: ResultCharacters, viewModelCharacter: ViewModelCharacter) {
+fun ComicsSection(viewModelCharacter: ViewModelCharacter) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
     ) {
         item {
             FlowRow(modifier = Modifier.background(darkBlue)) {
-                viewModelCharacter.getValuesOfMarvelListCharacterSeries()
-                viewModelCharacter.marvelListCharaterSeries.value?.let {  it ->
+                viewModelCharacter.getValuesOfMarvelListCharacterComics()
+                viewModelCharacter.marvelListCharacterComics.value?.let {  it ->
                     it.forEach { result ->
-                        GridItem(data = result)
+                        GridItemComics(data = result)
                     }
                 }
             }
