@@ -13,28 +13,30 @@ import javax.inject.Inject
 
 interface ViewModelCharacter {
     fun getCharacterSeries(resourceURI: String)
+    fun getCharacterComics(resourceURI: String)
+    fun getValuesOfMarvelListCharacterSeries()
+    fun getValuesOfMarvelListCharacterComics()
+    fun clearSeriesList()
+    fun clearComicsList()
     val marvelListCharacterComics: MutableLiveData<ArrayList<List<ResultComics>>>
     val marvelListCharacterSeries: MutableLiveData<ArrayList<List<ResultSeries>>>
     val errorMarvelListCharacterSeries: MutableLiveData<Boolean>
-    fun getValuesOfMarvelListCharacterSeries()
-    fun getCharacterComics(resourceURI: String)
-    fun getValuesOfMarvelListCharacterComics()
 }
 
 @HiltViewModel
 class CharacterViewModel @Inject constructor(private val services: ServicesCharacter) : ViewModel(),
     ViewModelCharacter {
 
-
-    private val list:ArrayList<List<ResultSeries>> = ArrayList()
+    private val list: ArrayList<List<ResultSeries>> = ArrayList()
     private val comicsList: ArrayList<List<ResultComics>> = ArrayList()
 
     private val characterSeries = MutableLiveData<ArrayList<List<ResultSeries>>>()
-    override val marvelListCharacterSeries: MutableLiveData<ArrayList<List<ResultSeries>>> = characterSeries
+    override val marvelListCharacterSeries: MutableLiveData<ArrayList<List<ResultSeries>>> =
+        characterSeries
 
     private val characterComics = MutableLiveData<ArrayList<List<ResultComics>>>()
-    override val marvelListCharacterComics: MutableLiveData<ArrayList<List<ResultComics>>> = characterComics
-
+    override val marvelListCharacterComics: MutableLiveData<ArrayList<List<ResultComics>>> =
+        characterComics
 
     private val errorCharacterSeries = MutableLiveData<Boolean>()
     override val errorMarvelListCharacterSeries: MutableLiveData<Boolean> = errorCharacterSeries
@@ -52,16 +54,14 @@ class CharacterViewModel @Inject constructor(private val services: ServicesChara
         }
     }
 
-
-
-    override fun getValuesOfMarvelListCharacterSeries(){
+    override fun getValuesOfMarvelListCharacterSeries() {
         marvelListCharacterSeries.postValue(list)
     }
 
     override fun getCharacterComics(resourceURI: String) {
-        viewModelScope.launch(Dispatchers.IO){
-            services.getCharacterComics(resourceURI).collect{ result ->
-                runCatching {  }
+        viewModelScope.launch(Dispatchers.IO) {
+            services.getCharacterComics(resourceURI).collect { result ->
+                runCatching { }
                     .onSuccess {
                         comicsList.add(result.data.results)
                     }
@@ -72,7 +72,15 @@ class CharacterViewModel @Inject constructor(private val services: ServicesChara
         }
     }
 
-    override fun getValuesOfMarvelListCharacterComics(){
+    override fun getValuesOfMarvelListCharacterComics() {
         marvelListCharacterComics.postValue(comicsList)
+    }
+
+    override fun clearSeriesList() {
+        list.clear()
+    }
+
+    override fun clearComicsList() {
+        comicsList.clear()
     }
 }

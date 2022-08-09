@@ -134,6 +134,7 @@ fun AboutSection(character: ResultCharacters) {
             character.description,
             color = Color.White,
             textAlign = TextAlign.Justify,
+            style = MaterialTheme.typography.subtitle1,
             modifier = Modifier.padding(8.dp)
         )
     }
@@ -158,7 +159,6 @@ fun SeriesSection(viewModelCharacter: ViewModelCharacter) {
     }
 }
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @Composable
 fun GridItem(data: List<ResultSeries>) {
     data.map { item ->
