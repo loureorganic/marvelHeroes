@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
@@ -15,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.marvelheroes.screens.home.ui.compose.AutoSliding
 import com.example.marvelheroes.screens.home.ui.compose.CharacterRowList
-import com.example.marvelheroes.screens.home.ui.compose.MainAppBar
+import com.example.marvelheroes.screens.home.ui.compose.components.MainAppBar
 import com.example.marvelheroes.screens.home.ui.compose.SeriesRowList
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import com.example.marvelheroes.screens.home.viewmodel.ViewModelHome
@@ -41,6 +42,7 @@ fun MainScreen(viewModelHome: ViewModelHome, context: Context, function: (a : In
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
+            .padding(8.dp)
     ) {
         MainAppBar(
             searchWidgetState = searchWidgetState,

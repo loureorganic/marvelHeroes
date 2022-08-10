@@ -25,22 +25,11 @@ val fonts = FontFamily(
     Font(R.font.poppins_thin),
     Font(R.font.poppins_thin_italic)
 )
+
 val Typography = Typography(
     body1 = TextStyle(
         fontFamily = fonts,
         fontWeight = FontWeight.Light,
         fontSize = 14.sp
     ),
-    /* Other default text styles to override
-    button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp
-    ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
-    )
-    */
 )

@@ -13,7 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.marvelheroes.screens.home.ui.compose.MainAppBar
+import com.example.marvelheroes.screens.home.ui.compose.components.MainAppBar
 import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import com.example.marvelheroes.screens.home.viewmodel.ViewModelHome
 import com.example.marvelheroes.screens.search.ui.SearchActivity

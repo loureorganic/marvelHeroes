@@ -18,13 +18,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
+import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -53,8 +58,7 @@ fun AutoSliding(list: List<ResultCharacters>) {
         }
     }
     Column() {
-
-        Column(modifier = Modifier.height(320.dp)) {
+        Column(modifier = Modifier.height(280.dp)) {
             HorizontalPager(
                 state = pagerState,
                 modifier = Modifier
@@ -74,10 +78,10 @@ fun AutoSliding(list: List<ResultCharacters>) {
                                 scaleY = scale
                             }
                         }
-                        .fillMaxWidth()
+                        .fillMaxWidth(2f)
                         .padding(15.dp, 0.dp, 15.dp, 0.dp),
 
-                    shape = RoundedCornerShape(20.dp)
+                    shape = RoundedCornerShape(15.dp)
                 ) {
                     Box(
                         modifier = Modifier
@@ -90,7 +94,10 @@ fun AutoSliding(list: List<ResultCharacters>) {
                             4,
                             "s"
                         ) + "/portrait_uncanny.${img2.thumbnail.extension}"
-                        val image = loadPicture(url = url, defaultImage = R.drawable.marvel_heroes_placeholder).value
+                        val image = loadPicture(
+                            url = url,
+                            defaultImage = R.drawable.marvel_heroes_placeholder
+                        ).value
                         image?.let { img ->
                             Image(
                                 bitmap = img.asImageBitmap(),
@@ -99,34 +106,21 @@ fun AutoSliding(list: List<ResultCharacters>) {
                                     .fillMaxWidth()
                                     .fillMaxHeight(),
                                 contentScale = ContentScale.Crop,
+                                alpha = 0.6f
                             )
                         }
 
                     }
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.BottomStart)
-                            .height(48.dp)
-                            .background(darkBlue)
-                            .fillMaxWidth()
-                    ) {
-                        Text(
-                            text = list[page].name,
-                            style = MaterialTheme.typography.h5,
-                            color = Color.White,
-                            textAlign = TextAlign.Left,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
+
                 }
             }
             // Indicator how image we are
-            /*    HorizontalPagerIndicator(
-                    pagerState = pagerState,
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .padding(16.dp)
-                )*/
+            HorizontalPagerIndicator(
+                pagerState = pagerState,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(16.dp)
+            )
         }
     }
 }
