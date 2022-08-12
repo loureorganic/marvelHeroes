@@ -14,7 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.marvelheroes.screens.home.ui.compose.AutoSliding
+import com.example.marvelheroes.screens.home.ui.compose.components.AutoSliding
 import com.example.marvelheroes.screens.home.ui.compose.CharacterRowList
 import com.example.marvelheroes.screens.home.ui.compose.components.MainAppBar
 import com.example.marvelheroes.screens.home.ui.compose.SeriesRowList

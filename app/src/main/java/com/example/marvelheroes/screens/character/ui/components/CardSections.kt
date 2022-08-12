@@ -151,7 +151,8 @@ fun SeriesSection(viewModelCharacter: ViewModelCharacter) {
                 viewModelCharacter.getValuesOfMarvelListCharacterSeries()
                 viewModelCharacter.marvelListCharacterSeries.value?.let {  it ->
                     it.forEach { result ->
-                        GridItem(data = result)
+                        val listFiltered = result.filter { !it.thumbnail.path.contains("available") }
+                        GridItem(data = listFiltered)
                     }
                 }
             }
@@ -234,7 +235,8 @@ fun ComicsSection(viewModelCharacter: ViewModelCharacter) {
                 viewModelCharacter.getValuesOfMarvelListCharacterComics()
                 viewModelCharacter.marvelListCharacterComics.value?.let {  it ->
                     it.forEach { result ->
-                        GridItemComics(data = result)
+                        val listFiltered = result.filter { !it.thumbnail.path.contains("available") }
+                        GridItemComics(data = listFiltered)
                     }
                 }
             }

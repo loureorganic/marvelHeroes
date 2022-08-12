@@ -132,8 +132,8 @@ fun SearchAppBarOpen(
                 .fillMaxWidth()
                 .height(56.dp)
                 .background(darkBackground)
-                .shadow(5.dp, CircleShape)
-                .background(darkBlue, CircleShape)
+                .shadow(15.dp, CircleShape)
+                .background(darkBlue)
         ) {
             TextField(
                 modifier = Modifier.fillMaxWidth(),
