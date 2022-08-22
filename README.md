@@ -13,7 +13,8 @@ The app develops with Kotlin using the Marvel API with the main function to pres
 <p>Actually, a new layout has been in development using jetpackCompose and a beautiful layout, to see more about it and view how it's going right now, access our figma link  </p>
 
 ## Screenshots
-<br>
+
+
 ## Development Roadmap
 
 - [x] [Kotlin](https://kotlinlang.org/)
