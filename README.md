@@ -1,4 +1,5 @@
 <img src="logos/logoGeneral.png" width="150" alt="Marvel Heroes">
+
 ## MarvelHeroes app built with Kotlin
 <p>
 The app develops with Kotlin using the Marvel API with the main function to present the stories, series, and characters of Marvel Studios.  The app is still under development but can be used right now with the initial functionalities. 
