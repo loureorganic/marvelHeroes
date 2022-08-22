@@ -9,21 +9,11 @@ MarvelHeroes app built with Kotlin
 The app develops with Kotlin using the Marvel API with the main function to present the stories, series, and characters of Marvel Studios.  The app is still under development but can be used right now with the initial functionalities. 
 </p>
 
+## Happening now
+<p>Actually, a new layout has been in development using jetpackCompose and a beautiful layout, to see more about it and view how it's going right now, access our figma link  </p>
+
 ## Screenshots
-
-<p align="center">
-  <img src="screenshots/PaletteScreen.png" width="250" alt="PalleteScreen">
-  <img src="screenshots/1.png" width="250" alt="SplashScreen">
-  <img src="screenshots/2.png" width="250" alt="LoginScreen">
-</p>
-
-<p align="center">
-  <img src="screenshots/3.png" width="250" alt="RegisterScreen">
-  <img src="screenshots/4.png" width="250" alt="HomeScreen">
-  <img src="screenshots/5.png" width="250" alt="SearchScreen">
-</p>
-
-
+<br>
 ## Development Roadmap
 
 - [x] [Kotlin](https://kotlinlang.org/)
@@ -43,14 +33,13 @@ The app develops with Kotlin using the Marvel API with the main function to pres
 - [x] [Google Firebase](https://firebase.google.com/docs)
 - [x] [SOLID](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
 - [x] [OOP](https://developer.mozilla.org/pt-BR/docs/Glossary/OOP) 
-- [ ] [Ktlint](https://ktlint.github.io/)
-- [ ] JUnit
-- [ ] MotionLayout
-- [ ] Transition Animations
-- [ ] DayNight
+- [x] [Ktlint](https://ktlint.github.io/)
 - [x] [Jetpack Compose](https://developer.android.com/jetpack/compose)
 - [x] [Paging Compose](https://developer.android.com/jetpack/androidx/releases/paging)
-- [x] [Build Variants - UNDER DEVELOPMENT](https://developer.android.com/studio/build/build-variants)
+- [x] [Build Variants](https://developer.android.com/studio/build/build-variants)
+- [ ] Unit tests
+- [ ] Transition Animations
+- [ ] DayNight
 
 ## Features
 
@@ -58,11 +47,11 @@ The app develops with Kotlin using the Marvel API with the main function to pres
 - [x] Login
 - [x] Register
 - [x] AutoSliding
-- [x] Search [UNDER DEVELOPMENT]
-- [ ] Icon info - Series
-- [ ] Icon info - About
-- [ ] Icon info- Events
-- [ ] Icon info - Stories
+- [x] Search
+- [x] Icon info - Series
+- [x] Icon info - About
+- [x] Icon info- Events
+- [x] Icon info - Stories
 - [ ] UserScreen
 
 ## Design
