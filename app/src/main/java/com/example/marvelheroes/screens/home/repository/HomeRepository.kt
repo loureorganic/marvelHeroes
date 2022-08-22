@@ -21,7 +21,7 @@ interface RepositoryHome {
 }
 
 @Singleton
-class HomeRepository @Inject constructor(private val retrofit: RetrofitInstance): RepositoryHome {
+class HomeRepository @Inject constructor(private val retrofit: RetrofitInstance) : RepositoryHome {
 
     override suspend fun getCharactersForSliding(): Flow<MarvelApi> = flow {
         val timestamp = generateTimestamp()
@@ -30,15 +30,15 @@ class HomeRepository @Inject constructor(private val retrofit: RetrofitInstance)
 
     override suspend fun getAllCharacters(): Flow<MarvelApi> = flow {
         val timestamp = generateTimestamp()
-         emit(retrofit.api.getAllCharacters(hash = convertToMd5(hash(timestamp = timestamp)), timestamp = timestamp))
+        emit(retrofit.api.getAllCharacters(hash = convertToMd5(hash(timestamp = timestamp)), timestamp = timestamp))
     }
 
-    override suspend fun getAnCharacter(characterId: String) : Flow<MarvelApi> = flow{
+    override suspend fun getAnCharacter(characterId: String): Flow<MarvelApi> = flow {
         val timestamp = generateTimestamp()
         emit(retrofit.api.getAnCharacters(characterId, hash = convertToMd5(hash(timestamp = timestamp)), timestamp = timestamp))
     }
 
-    override suspend fun getAllComics() : Flow<ComicsModel> = flow {
+    override suspend fun getAllComics(): Flow<ComicsModel> = flow {
         val timestamp = generateTimestamp()
         emit(retrofit.api.getAllComics(hash = convertToMd5(hash(timestamp = timestamp)), timestamp = timestamp))
     }
@@ -47,5 +47,4 @@ class HomeRepository @Inject constructor(private val retrofit: RetrofitInstance)
         val timestamp = generateTimestamp()
         emit(retrofit.api.getAllSeries(hash = convertToMd5(hash(timestamp = timestamp)), timestamp = timestamp))
     }
-
 }

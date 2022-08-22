@@ -1,9 +1,9 @@
 package com.example.marvelheroes.repositories.network.api.request
 
 import com.example.marvelheroes.model.comics.ComicsModel
+import com.example.marvelheroes.model.series.SeriesModel
 import com.example.marvelheroes.repositories.network.api.models.characterModel.MarvelApi
 import com.example.marvelheroes.repositories.network.api.utils.ApiConstants.PUBLIC_KEY
-import com.example.marvelheroes.model.series.SeriesModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -29,7 +29,7 @@ interface MarvelApiRequest {
 
     @GET("/v1/public/characters/")
     suspend fun getAnCharacters(
-        @Path("characterId") characterId : String,
+        @Path("characterId") characterId: String,
         @Query("ts") timestamp: String,
         @Query("apikey") apiKey: String = PUBLIC_KEY,
         @Query("hash") hash: String,
@@ -41,7 +41,7 @@ interface MarvelApiRequest {
         @Query("apikey") apiKey: String = PUBLIC_KEY,
         @Query("hash") hash: String,
         @Query("limit") count: Int = 80,
-    ) : ComicsModel
+    ): ComicsModel
 
     @GET("/v1/public/series")
     suspend fun getAllSeries(
@@ -49,7 +49,7 @@ interface MarvelApiRequest {
         @Query("apikey") apiKey: String = PUBLIC_KEY,
         @Query("hash") hash: String,
         @Query("limit") count: Int = 80,
-    ) : SeriesModel
+    ): SeriesModel
 
     @GET("/v1/public/characters")
     suspend fun searchCharacter(
@@ -80,6 +80,4 @@ interface MarvelApiRequest {
         @Query("offset") offset: Int = 0,
         @Query("id") id: String
     ): ComicsModel
-
-
 }

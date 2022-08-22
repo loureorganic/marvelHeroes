@@ -31,7 +31,7 @@ object CharacterModule {
 
     @Provides
     @Singleton
-    fun providesCharacterRepository(retrofitInstance: RetrofitInstance): RepositoryCharacter{
+    fun providesCharacterRepository(retrofitInstance: RetrofitInstance): RepositoryCharacter {
         return CharacterRepository(retrofitInstance)
     }
 }

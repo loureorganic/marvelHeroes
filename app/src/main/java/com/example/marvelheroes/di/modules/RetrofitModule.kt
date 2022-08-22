@@ -13,8 +13,7 @@ object RetrofitModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit() : RetrofitInstance{
+    fun provideRetrofit(): RetrofitInstance {
         return RetrofitInstance()
     }
-
 }

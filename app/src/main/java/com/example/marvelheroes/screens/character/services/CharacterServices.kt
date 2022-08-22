@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 interface ServicesCharacter {
     suspend fun getCharacterSeries(resourceURI: String): Flow<SeriesModel>
-    suspend fun  getCharacterComics (resourceURI: String) : Flow<ComicsModel>
+    suspend fun getCharacterComics(resourceURI: String): Flow<ComicsModel>
 }
 
 @Singleton
@@ -24,6 +24,4 @@ class CharacterServices @Inject constructor(private val repository: RepositoryCh
         val comicsId = resourceURI.substring(43)
         return repository.getCharacterComics(comicsId)
     }
-
-
 }

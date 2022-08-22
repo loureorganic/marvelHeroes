@@ -37,7 +37,8 @@ interface ViewModelHome {
 }
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val services: ServicesHome) : ViewModel(),
+class HomeViewModel @Inject constructor(private val services: ServicesHome) :
+    ViewModel(),
     ViewModelHome {
 
     private val _searchWidgetState: MutableState<SearchWidgetState> =
@@ -57,7 +58,6 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
         _searchTextState.value = newValue
     }
 
-
     private val marvelApi = MutableLiveData<List<ResultCharacters>>()
     private val errorMarvelSlidingCall = MutableLiveData<Boolean>()
     private val errorMarvelCharactersCall = MutableLiveData<Boolean>()
@@ -67,7 +67,6 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
 
     private val seriesCall = MutableLiveData<List<ResultSeries>>()
     private val errorSeriesCall = MutableLiveData<Boolean>()
-
 
     override val marvelListForSliding: MutableLiveData<List<ResultCharacters>> = marvelApi
     override val errorMarvelListForSliding: MutableLiveData<Boolean> = errorMarvelSlidingCall
@@ -81,7 +80,6 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
     override val marvelListAllSeries: MutableLiveData<List<ResultSeries>> = seriesCall
     override val errorMarvelListAllSeries: MutableLiveData<Boolean> = errorSeriesCall
 
-
     override fun getCharactersForSliding() {
         viewModelScope.launch(Dispatchers.IO) {
             services.getCharactersForSliding().collect { response ->
@@ -90,9 +88,10 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
                         errorMarvelListForSliding.postValue(true)
                         Log.e("MARVEL_HEROES - ERROR GET_CHARACTERS_FOR_SLIDING", ": $error")
                     }
-                    .onSuccess { marvelListForSliding.postValue(response.data.results)
-                        errorMarvelListForSliding.postValue(false)}
-
+                    .onSuccess {
+                        marvelListForSliding.postValue(response.data.results)
+                        errorMarvelListForSliding.postValue(false)
+                    }
             }
         }
     }
@@ -105,9 +104,10 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
                         errorMarvelListAllCharacters.postValue(true)
                         Log.e("MARVEL_HEROES - ERROR GET_ALL_CHARACTERS", ": $error")
                     }
-                    .onSuccess { marvelListAllCharacters.postValue(response.data.results)
-                        errorMarvelListAllCharacters.postValue(false)}
-
+                    .onSuccess {
+                        marvelListAllCharacters.postValue(response.data.results)
+                        errorMarvelListAllCharacters.postValue(false)
+                    }
             }
         }
     }
@@ -134,7 +134,8 @@ class HomeViewModel @Inject constructor(private val services: ServicesHome) : Vi
                 runCatching {}
                     .onFailure { error ->
                         errorMarvelListAllSeries.postValue(true)
-                        Log.e("MARVEL_HEROES - ERROR GET_SERIES", ": $error")}
+                        Log.e("MARVEL_HEROES - ERROR GET_SERIES", ": $error")
+                    }
                     .onSuccess {
                         errorMarvelListAllSeries.postValue(false)
                         marvelListAllSeries.postValue(response.data.results)

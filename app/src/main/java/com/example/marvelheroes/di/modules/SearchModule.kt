@@ -13,26 +13,25 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object SearchModule {
 
     @Provides
     @Singleton
-    fun provideSearchViewModel(services: ServicesSearch): ViewModelSearch{
+    fun provideSearchViewModel(services: ServicesSearch): ViewModelSearch {
         return SearchViewModel(services)
     }
 
     @Provides
     @Singleton
-    fun provideSearchServices(repository: RepositorySearch) : ServicesSearch{
+    fun provideSearchServices(repository: RepositorySearch): ServicesSearch {
         return SearchServices(repository)
     }
 
     @Provides
     @Singleton
-    fun provideSearchRepository(retrofitInstance: RetrofitInstance): RepositorySearch{
+    fun provideSearchRepository(retrofitInstance: RetrofitInstance): RepositorySearch {
         return SearchRepository(retrofitInstance)
     }
 }

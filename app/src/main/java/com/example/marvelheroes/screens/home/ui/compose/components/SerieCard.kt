@@ -20,7 +20,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @Composable
 fun SerieCard(card: ResultSeries) {
     Box(modifier = Modifier.background(darkBackground).padding(8.dp).width(140.dp)) {
-        //Image
+        // Image
         val url = card.thumbnail.path.replaceRange(
             4,
             4,
@@ -39,6 +39,5 @@ fun SerieCard(card: ResultSeries) {
         }
         // Add a horizontal space between the image and the column
         Spacer(modifier = Modifier.width(8.dp))
-
     }
 }

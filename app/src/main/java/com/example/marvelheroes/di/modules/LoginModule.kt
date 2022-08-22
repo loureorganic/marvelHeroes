@@ -7,7 +7,6 @@ import com.example.marvelheroes.screens.login.services.LoginServices
 import com.example.marvelheroes.screens.login.services.ServicesLogin
 import com.example.marvelheroes.screens.login.viewmodel.LoginViewModel
 import com.example.marvelheroes.screens.login.viewmodel.ViewModelLogin
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +25,7 @@ object LoginModule {
 
     @Singleton
     @Provides
-    fun provideLoginService(repository : RepositoryLogin): ServicesLogin {
+    fun provideLoginService(repository: RepositoryLogin): ServicesLogin {
         return LoginServices(repository)
     }
 

@@ -2,8 +2,6 @@ package com.example.marvelheroes.screens.login.repository
 
 import com.example.marvelheroes.repositories.database.AuthenticatorDatabase
 import com.example.marvelheroes.screens.login.model.UserLogin
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Singleton
 

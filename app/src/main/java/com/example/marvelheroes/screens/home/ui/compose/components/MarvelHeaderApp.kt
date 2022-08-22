@@ -25,7 +25,6 @@ import com.example.marvelheroes.screens.home.ui.utils.SearchWidgetState
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 
-
 @Composable
 fun MarvelHeaderApp(onSearchClicked: () -> Unit) {
     TopAppBar(backgroundColor = darkBlue) {
@@ -47,7 +46,6 @@ fun MarvelHeaderApp(onSearchClicked: () -> Unit) {
     }
 }
 
-
 @Composable
 fun SearchAppBar(
     text: String,
@@ -60,7 +58,8 @@ fun SearchAppBar(
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .height(56.dp), elevation = AppBarDefaults.TopAppBarElevation, color = darkBlue
+            .height(56.dp),
+        elevation = AppBarDefaults.TopAppBarElevation, color = darkBlue
     ) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
@@ -83,12 +82,12 @@ fun SearchAppBar(
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = {}, modifier = Modifier.alpha(ContentAlpha.medium)) {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "Search Icon",
-                        tint = Color.White
-                    )
-                }
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search Icon",
+                    tint = Color.White
+                )
+            }
             },
             trailingIcon = {
                 IconButton(onClick = {
@@ -115,7 +114,6 @@ fun SearchAppBar(
         )
     }
 }
-
 
 @Composable
 fun SearchAppBarOpen(
@@ -156,12 +154,12 @@ fun SearchAppBarOpen(
                 singleLine = true,
                 leadingIcon = {
                     IconButton(onClick = {}, modifier = Modifier.alpha(ContentAlpha.medium)) {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = "Search Icon",
-                            tint = Color.White
-                        )
-                    }
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = "Search Icon",
+                        tint = Color.White
+                    )
+                }
                 },
                 trailingIcon = {
                     IconButton(onClick = {
@@ -197,7 +195,6 @@ fun SearchAppBarOpen(
         }
     }
 }
-
 
 @Composable
 fun MainAppBar(

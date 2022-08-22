@@ -15,7 +15,6 @@ import com.example.marvelheroes.screens.home.ui.utils.loadPicture
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
 @OptIn(ExperimentalCoroutinesApi::class)
 @SuppressLint("ResourceType")
 @Composable

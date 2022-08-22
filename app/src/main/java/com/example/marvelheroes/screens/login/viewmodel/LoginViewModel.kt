@@ -12,11 +12,11 @@ import javax.inject.Inject
 interface ViewModelLogin {
     val booleanLoginUserLiveData: MutableLiveData<Boolean>
     fun loginUser(user: UserLogin)
-    fun dataLoginValidation(user: UserLogin) : String
+    fun dataLoginValidation(user: UserLogin): String
 }
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val services: ServicesLogin): ViewModel(), ViewModelLogin {
+class LoginViewModel @Inject constructor(private val services: ServicesLogin) : ViewModel(), ViewModelLogin {
 
     private val loginUserLiveData = MutableLiveData<Boolean>()
     override val booleanLoginUserLiveData: MutableLiveData<Boolean> = loginUserLiveData

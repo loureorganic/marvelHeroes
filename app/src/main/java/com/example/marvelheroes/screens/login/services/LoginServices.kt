@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 interface ServicesLogin {
     suspend fun loginUser(user: UserLogin): Boolean
-    fun dataLoginValidation(user: UserLogin) : String
+    fun dataLoginValidation(user: UserLogin): String
 }
 
 @Singleton
@@ -20,11 +20,11 @@ class LoginServices @Inject constructor(private val loginRepository: RepositoryL
     }
 
     override fun dataLoginValidation(user: UserLogin): String {
-        return  if (user.password.isEmpty() && user.password.length <= 6) {
+        return if (user.password.isEmpty() && user.password.length <= 6) {
             LoginConstants.EMPTY_PASSWORD
-        }else if (!PatternsCompat.EMAIL_ADDRESS.matcher(user.email).matches()) {
+        } else if (!PatternsCompat.EMAIL_ADDRESS.matcher(user.email).matches()) {
             LoginConstants.INVALID_EMAIL
-        }  else {
+        } else {
             LoginConstants.VALID
         }
     }

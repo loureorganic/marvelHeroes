@@ -35,13 +35,13 @@ class DatabaseAuthenticator @Inject constructor(
     override suspend fun createUser(user: UserAccount): Resource<AuthResult> {
         return withContext(Dispatchers.IO) {
             safeCall {
-            val result = firebaseAuth.createUserWithEmailAndPassword(user.email, user.password).await()
-            val uid = firebaseAuth.uid
+                val result = firebaseAuth.createUserWithEmailAndPassword(user.email, user.password).await()
+                val uid = firebaseAuth.uid
 
-            if (uid != null) {
-                firebaseDatabase.getReference("Users").child(uid).setValue(user).await()
-            }
-            Resource.Success(result)
+                if (uid != null) {
+                    firebaseDatabase.getReference("Users").child(uid).setValue(user).await()
+                }
+                Resource.Success(result)
             }
         }
     }

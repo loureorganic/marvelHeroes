@@ -1,6 +1,5 @@
 package com.example.marvelheroes.screens.register.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -29,18 +28,18 @@ class RegisterViewModel @Inject constructor(private val services: ServiceRegiste
 
     override fun createUser(userAccount: UserAccount) {
         viewModelScope.launch {
-           try {
-               val result = services.createUser(userAccount)
-               if (result.data != null) {
-                   booleanCreateUserLiveData.postValue(true)
-                   errorBooleanCreateUserLiveData.postValue(false)
-               } else {
-                   booleanCreateUserLiveData.postValue(false)
-                   errorBooleanCreateUserLiveData.postValue(false)
-               }
-           } catch (e: Exception){
-               errorBooleanCreateUserLiveData.postValue(true)
-           }
+            try {
+                val result = services.createUser(userAccount)
+                if (result.data != null) {
+                    booleanCreateUserLiveData.postValue(true)
+                    errorBooleanCreateUserLiveData.postValue(false)
+                } else {
+                    booleanCreateUserLiveData.postValue(false)
+                    errorBooleanCreateUserLiveData.postValue(false)
+                }
+            } catch (e: Exception) {
+                errorBooleanCreateUserLiveData.postValue(true)
+            }
         }
     }
 

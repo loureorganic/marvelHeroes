@@ -1,6 +1,5 @@
 package com.example.marvelheroes.screens.home.ui.model
 
-
 data class NaturalModel(
     val title: String,
     val rating: Float,

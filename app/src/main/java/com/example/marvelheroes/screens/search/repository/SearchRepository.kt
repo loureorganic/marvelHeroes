@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 interface RepositorySearch {
     suspend fun searchCharacter(nameSearched: String): Flow<MarvelApi>
 }
@@ -24,7 +23,8 @@ class SearchRepository @Inject constructor(private val retrofit: RetrofitInstanc
                     ApiConstants.hash(
                         timestamp = timestamp
                     )
-                ), timestamp = timestamp, name = nameSearched
+                ),
+                timestamp = timestamp, name = nameSearched
             )
         )
     }

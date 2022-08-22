@@ -11,18 +11,16 @@ object ApiConstants {
     const val PRIVATE_KEY = BuildConfig.API_KEY_PRIVATE
     const val PUBLIC_KEY = BuildConfig.API_KEY_PUBLIC
 
-
     fun generateTimestamp(): String {
         return DateTimeFormatter.ISO_INSTANT.format(Instant.now())
     }
 
-    fun hash(timestamp: String) : String {
+    fun hash(timestamp: String): String {
         return "$timestamp$PRIVATE_KEY$PUBLIC_KEY"
     }
 
-     fun convertToMd5(input: String): String {
+    fun convertToMd5(input: String): String {
         val md5Value = MessageDigest.getInstance("MD5")
         return BigInteger(1, md5Value.digest(input.toByteArray())).toString(16).padStart(32, '0')
     }
 }
-

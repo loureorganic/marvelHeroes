@@ -98,9 +98,7 @@ fun AutoSliding(list: List<ResultCharacters>) {
                                 alpha = 0.6f
                             )
                         }
-
                     }
-
                 }
             }
             // Indicator how image we are

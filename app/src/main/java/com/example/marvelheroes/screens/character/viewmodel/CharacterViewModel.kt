@@ -24,7 +24,8 @@ interface ViewModelCharacter {
 }
 
 @HiltViewModel
-class CharacterViewModel @Inject constructor(private val services: ServicesCharacter) : ViewModel(),
+class CharacterViewModel @Inject constructor(private val services: ServicesCharacter) :
+    ViewModel(),
     ViewModelCharacter {
 
     private val list: ArrayList<List<ResultSeries>> = ArrayList()
@@ -66,7 +67,6 @@ class CharacterViewModel @Inject constructor(private val services: ServicesChara
                         comicsList.add(result.data.results)
                     }
                     .onFailure {
-
                     }
             }
         }

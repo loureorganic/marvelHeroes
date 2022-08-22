@@ -38,10 +38,8 @@ fun searchMainScreen(
         viewModelSearch.errorMarvelListForSearchCharacter.observeAsState(null)
     val searchCopyrightData = viewModelSearch.searchCopyrightData.observeAsState(null)
 
-
     val searchWidgetState by viewModelHome.searchWidgetState
     val searchTextState by viewModelHome.searchTextState
-
 
     Column(
         modifier = Modifier

@@ -27,25 +27,23 @@ fun loadPicture(
     val bitmapState: MutableState<Bitmap?> = mutableStateOf(null)
 
     Glide.with(LocalContext.current).asBitmap().load(defaultImage).diskCacheStrategy(
-        DiskCacheStrategy.ALL).into(object: CustomTarget<Bitmap>(){
-        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-             bitmapState.value = resource
-        }
-
-        override fun onLoadCleared(placeholder: Drawable?) {
-        }
-
-
-    })
-
-    Glide.with(LocalContext.current).asBitmap().load(url).diskCacheStrategy(DiskCacheStrategy.ALL).into(object: CustomTarget<Bitmap>(){
+        DiskCacheStrategy.ALL
+    ).into(object : CustomTarget<Bitmap>() {
         override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
             bitmapState.value = resource
         }
 
         override fun onLoadCleared(placeholder: Drawable?) {
         }
+    })
 
+    Glide.with(LocalContext.current).asBitmap().load(url).diskCacheStrategy(DiskCacheStrategy.ALL).into(object : CustomTarget<Bitmap>() {
+        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+            bitmapState.value = resource
+        }
+
+        override fun onLoadCleared(placeholder: Drawable?) {
+        }
     })
 
     return bitmapState

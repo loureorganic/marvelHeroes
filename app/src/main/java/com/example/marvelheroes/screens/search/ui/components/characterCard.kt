@@ -33,14 +33,15 @@ import com.example.marvelheroes.screens.home.ui.utils.loadPicture
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBlue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
 @OptIn(
     ExperimentalCoroutinesApi::class, ExperimentalMaterial3Api::class,
     ExperimentalMaterialApi::class
 )
 @Composable
 fun characterCard(
-    item: List<ResultCharacters>, copyrightData: String, context: Context,
+    item: List<ResultCharacters>,
+    copyrightData: String,
+    context: Context,
     function: (a: Intent) -> (Unit)
 ) {
     Column(
@@ -147,7 +148,7 @@ fun characterCard(
                         modifier = Modifier
                             .weight(1f)
                             .padding(4.dp),
-                        onClick = {function(Intent(context, CharacterActivity::class.java)) },
+                        onClick = { function(Intent(context, CharacterActivity::class.java)) },
                         colors = AssistChipDefaults.assistChipColors(leadingIconContentColor = Color.White),
                         leadingIcon = {
                             Icon(
@@ -181,7 +182,6 @@ fun characterCard(
                         label = { Text(text = "Mark as favorite", color = Color.White) }
                     )
                 }
-
             }
         }
     }

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
 
-
 class PhotoAdapter(var context: Context) : RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
 
     private var dataList = emptyList<ResultCharacters>()
@@ -31,7 +30,7 @@ class PhotoAdapter(var context: Context) : RecyclerView.Adapter<PhotoAdapter.Vie
 
         holder.title.text = data.name
 
-        loaderImage(context = context, imageData = data.thumbnail.path.replaceRange(4,4,"s") + "/portrait_uncanny.${data.thumbnail.extension}", holderImage = holder.image)
+        loaderImage(context = context, imageData = data.thumbnail.path.replaceRange(4, 4, "s") + "/portrait_uncanny.${data.thumbnail.extension}", holderImage = holder.image)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

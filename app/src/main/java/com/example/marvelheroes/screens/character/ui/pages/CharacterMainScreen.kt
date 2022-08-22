@@ -1,4 +1,4 @@
-package com.example.marvelheroes.screens.character.ui.composePages
+package com.example.marvelheroes.screens.character.ui.pages
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,15 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
-import com.example.marvelheroes.screens.character.ui.components.PagerContent
-import com.example.marvelheroes.screens.character.ui.components.TabsRow
-import com.example.marvelheroes.screens.character.ui.ui.theme.fonts
+import com.example.marvelheroes.screens.character.ui.modules.PagerContent
+import com.example.marvelheroes.screens.character.ui.modules.TabsRowModule
 import com.example.marvelheroes.screens.character.viewmodel.ViewModelCharacter
 import com.example.marvelheroes.screens.home.ui.utils.loadPicture
 import com.example.marvelheroes.screens.search.ui.ui.theme.darkBackground
@@ -37,24 +33,16 @@ fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewMo
             .background(darkBackground)
     ) {
         Card(
-            modifier = Modifier
-                .height(350.dp)
-                .align(Alignment.CenterHorizontally)
-                .background(darkBackground),
+            modifier = Modifier.height(350.dp).align(Alignment.CenterHorizontally).background(darkBackground),
         ) {
             Box(
                 modifier = Modifier
                     .background(darkBlue)
             ) {
-                val url = item[0].thumbnail.path.replaceRange(
-                    4,
-                    4,
-                    "s"
-                ) + "/standard_amazing.${item[0].thumbnail.extension}"
-                val image = loadPicture(
-                    url = url,
-                    defaultImage = R.drawable.marvel_heroes_placeholder
-                ).value
+
+                val url = item[0].thumbnail.path.replaceRange(4, 4, "s") + "/standard_amazing.${item[0].thumbnail.extension}"
+                val image = loadPicture(url = url, defaultImage = R.drawable.marvel_heroes_placeholder).value
+
                 image?.let { img ->
                     Image(
                         bitmap = img.asImageBitmap(),
@@ -69,10 +57,7 @@ fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewMo
             Spacer(modifier = Modifier.height(8.dp))
         }
         Column(
-            modifier = Modifier
-                .padding(16.dp)
-                .background(darkBackground)
-                .align(Alignment.CenterHorizontally),
+            modifier = Modifier.padding(16.dp).background(darkBackground).align(Alignment.CenterHorizontally),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -103,10 +88,8 @@ fun characterMainScreen(item: List<ResultCharacters>, viewModelCharacter: ViewMo
         }
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             val pagerState = rememberPagerState(pageCount = 3)
-            TabsRow(pagerState)
+            TabsRowModule(pagerState)
             PagerContent(pagerState, item[0], viewModelCharacter)
         }
     }
 }
-
-

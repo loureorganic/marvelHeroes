@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.marvelheroes.model.series.ResultSeries
 
-
 @Composable
 fun SeriesRowList(cards: List<ResultSeries>) {
     val cardFiltered = cards.filter { !it.thumbnail.path.contains("available") }

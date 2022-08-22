@@ -13,7 +13,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object HomeModule {
@@ -26,14 +25,13 @@ object HomeModule {
 
     @Provides
     @Singleton
-    fun provideHomeServices(repository: RepositoryHome) : ServicesHome {
+    fun provideHomeServices(repository: RepositoryHome): ServicesHome {
         return HomeServices(repository)
     }
 
     @Provides
     @Singleton
-    fun provideHomeRepository(retrofitInstance: RetrofitInstance) : RepositoryHome {
+    fun provideHomeRepository(retrofitInstance: RetrofitInstance): RepositoryHome {
         return HomeRepository(retrofitInstance)
     }
-
 }

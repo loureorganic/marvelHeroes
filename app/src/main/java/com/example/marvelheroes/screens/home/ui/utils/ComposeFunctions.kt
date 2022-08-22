@@ -18,7 +18,6 @@ import com.example.marvelheroes.R
 import com.example.marvelheroes.repositories.network.api.models.characterModel.ResultCharacters
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
 @Composable
 fun CardList(list: List<ResultCharacters>) {
     Column(Modifier.background(Color.Red)) {

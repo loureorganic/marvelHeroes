@@ -32,6 +32,4 @@ class HomeServices @Inject constructor(private val repository: RepositoryHome) :
     override suspend fun getAllSeries(): Flow<SeriesModel> {
         return repository.getAllSeries()
     }
-
-
 }

@@ -1,6 +1,5 @@
 package com.example.marvelheroes.screens.register.services
 
-import android.util.Log
 import android.util.Patterns
 import com.example.marvelheroes.screens.register.model.UserAccount
 import com.example.marvelheroes.screens.register.repository.RepositoryRegister
@@ -36,5 +35,4 @@ class RegisterServices @Inject constructor(private val repository: RepositoryReg
             RegisterConstants.VALID
         }
     }
-
 }

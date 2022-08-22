@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 interface ViewModelSearch {
     fun searchCharacter(nameSearched: String)
-    val searchCopyrightData : MutableLiveData<String>
+    val searchCopyrightData: MutableLiveData<String>
     val marvelListForSearchCharacter: MutableLiveData<List<ResultCharacters>>
     val errorMarvelListForSearchCharacter: MutableLiveData<Boolean>
     val searchWidgetState: State<SearchWidgetState>
@@ -29,7 +29,6 @@ interface ViewModelSearch {
 @HiltViewModel
 class SearchViewModel @Inject constructor(private val services: ServicesSearch) : ViewModelSearch,
     ViewModel() {
-
 
     private val _searchWidgetState: MutableState<SearchWidgetState> =
         mutableStateOf(value = SearchWidgetState.CLOSED)
@@ -57,18 +56,16 @@ class SearchViewModel @Inject constructor(private val services: ServicesSearch) 
     private val copyrightData = MutableLiveData<String>()
     override val searchCopyrightData: MutableLiveData<String> = copyrightData
 
-
-
     override fun searchCharacter(nameSearched: String) {
         viewModelScope.launch(Dispatchers.IO) {
             services.searchCharacter(nameSearched).collect { response ->
-                runCatching {  }.onSuccess {
+                runCatching { }.onSuccess {
                     errorCharacterSearch.postValue(false)
                     searchCopyrightData.postValue(response.attributionText)
                     marvelListForSearchCharacter.postValue(response.data.results)
                 }
                     .onFailure { error ->
-                        Log.e("MARVEL_HEROES - ERROR SEARCH_CHARACTER", ": $error" )
+                        Log.e("MARVEL_HEROES - ERROR SEARCH_CHARACTER", ": $error")
                         errorCharacterSearch.postValue(true)
                     }
             }

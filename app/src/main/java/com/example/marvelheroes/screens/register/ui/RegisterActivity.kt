@@ -24,7 +24,6 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 
     override fun onStart() {
@@ -37,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
                 password = binding.textInputEditText6.text.toString().trim(),
                 confirmPassword = binding.textInputEditText7.text.toString().trim(),
 
-                )
+            )
             validateRegisterData(user)
         }
     }

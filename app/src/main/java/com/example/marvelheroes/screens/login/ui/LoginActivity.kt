@@ -67,8 +67,7 @@ class LoginActivity : AppCompatActivity() {
             if (response) {
                 startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                 finish()
-            }
-            else {
+            } else {
                 Toast.makeText(this, "Email or password are invalid", Toast.LENGTH_SHORT).show()
             }
         }

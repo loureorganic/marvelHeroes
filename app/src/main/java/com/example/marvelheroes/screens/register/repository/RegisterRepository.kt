@@ -11,7 +11,6 @@ interface RepositoryRegister {
     suspend fun createUser(userAccount: UserAccount): Resource<AuthResult>
 }
 
-
 @Singleton
 class RegisterRepository @Inject constructor(private val database: AuthenticatorDatabase) : RepositoryRegister {
     override suspend fun createUser(userAccount: UserAccount): Resource<AuthResult> {
