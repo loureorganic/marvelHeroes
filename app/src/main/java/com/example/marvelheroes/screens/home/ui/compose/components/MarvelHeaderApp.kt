@@ -3,7 +3,10 @@ package com.example.marvelheroes.screens.home.ui.compose.components
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -14,7 +17,6 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -57,8 +59,7 @@ fun SearchAppBar(
 ) {
     Surface(
         modifier = Modifier
-            .fillMaxWidth()
-            .height(56.dp),
+            .height(46.dp),
         elevation = AppBarDefaults.TopAppBarElevation, color = darkBlue
     ) {
         TextField(
@@ -66,13 +67,6 @@ fun SearchAppBar(
             value = text,
             onValueChange = {
                 onTextChange(it)
-            },
-            placeholder = {
-                Text(
-                    text = "Search here...",
-                    color = Color.White,
-                    modifier = Modifier.alpha(ContentAlpha.medium)
-                )
             },
             textStyle = TextStyle(
                 fontSize = MaterialTheme.typography.subtitle1.fontSize,
@@ -127,8 +121,7 @@ fun SearchAppBarOpen(
     Row() {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp)
+                .height(46.dp)
                 .background(darkBackground)
                 .shadow(15.dp, CircleShape)
                 .background(darkBlue)
@@ -138,13 +131,6 @@ fun SearchAppBarOpen(
                 value = text,
                 onValueChange = {
                     onTextChange(it)
-                },
-                placeholder = {
-                    Text(
-                        text = "Search here...",
-                        color = Color.White,
-                        modifier = Modifier.alpha(ContentAlpha.medium)
-                    )
                 },
                 textStyle = TextStyle(
                     fontSize = MaterialTheme.typography.subtitle1.fontSize,
@@ -184,14 +170,6 @@ fun SearchAppBarOpen(
                     cursorColor = Color.White.copy(alpha = ContentAlpha.medium)
                 )
             )
-        }
-
-        Column(
-            modifier = Modifier
-                .clip(CircleShape)
-                .background(Color.Red)
-        ) {
-            Text(text = "A")
         }
     }
 }
